@@ -31,8 +31,8 @@ what the function does.
 
 At the beginning of each session, you will need to set the base url of
 your Plausible Analytics instance (if not self-hosted,
-\[<https://plausible.io/>\]), your `site_id` (the domain of your
-website), and your API key.
+<https://plausible.io/>), your `site_id` (the domain of your website),
+and your API key.
 
 ``` r
 pa_set(base_url = "https://plausible.io/",
