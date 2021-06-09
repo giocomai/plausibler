@@ -7,21 +7,23 @@
 pa_set(base_url = NULL, site_id = NULL, key = NULL)
 }
 \arguments{
-\item{base_url}{The base URL of the Plausible instance. Typically \link{https://plausible.io/} for hosted Plausible.}
+\item{base_url}{The base URL of the Plausible instance. Typically https://plausible.io/ for hosted Plausible.}
 
 \item{site_id}{Corresponds to the domain of your website.}
 
 \item{key}{A character string used for authentication. Can be retrieved from the user settings in Plausible Analytics.}
 }
 \value{
-
+Invisibly returns input as list.
 }
 \description{
 Set API key for the current session
 }
 \examples{
 
-pa_set(base_url = "https://plausible.io/",
-       site_id = "example.com",
-       key="actual_key_here")
+pa_set(
+  base_url = "https://plausible.io/",
+  site_id = "example.com",
+  key = "actual_key_here"
+)
 }

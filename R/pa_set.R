@@ -1,10 +1,10 @@
 #' Set API key for the current session
 #'
-#' @param base_url The base URL of the Plausible instance. Typically [https://plausible.io/] for hosted Plausible.
+#' @param base_url The base URL of the Plausible instance. Typically https://plausible.io/ for hosted Plausible.
 #' @param site_id Corresponds to the domain of your website.
 #' @param key A character string used for authentication. Can be retrieved from the user settings in Plausible Analytics.
 #'
-#' @return
+#' @return Invisibly returns input as list.
 #' @export
 #'
 #' @examples

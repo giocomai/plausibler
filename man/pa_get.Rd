@@ -20,11 +20,14 @@ A data frame (a tibble) with results.
 For details, consult the official documentation: https://plausible.io/docs/stats-api
 }
 \examples{
-pa_get(endpoint = "/api/v1/stats/timeseries",
-       parameters = list(period = "6mo"))
+\dontrun{
+pa_get(
+  endpoint = "/api/v1/stats/timeseries",
+  parameters = list(period = "6mo")
+)
 
 # Same as above, but with full_url:
 # N.B. You still need to set the key with pa_set(). Replace $SITE_ID with your domain
 pa_get(full_url = "https://plausible.io/api/v1/stats/timeseries?site_id=$SITE_ID&period=6mo")
-
+}
 }

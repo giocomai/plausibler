@@ -16,8 +16,9 @@ A data frame.
 Get time series
 }
 \examples{
+\dontrun{
 pa_get_timeseries(period = "6mo")
 pa_get_timeseries(period = "30d")
 pa_get_timeseries(period = "custom&date=2021-06-01,2021-06-07")
-
+}
 }
