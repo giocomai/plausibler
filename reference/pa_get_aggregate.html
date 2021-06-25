@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set API key for the current session — pa_set • plausibler</title>
+<title>Get aggregated stats for a given page — pa_get_aggregate • plausibler</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Set API key for the current session — pa_set" />
-<meta property="og:description" content="Set API key for the current session" />
+<meta property="og:title" content="Get aggregated stats for a given page — pa_get_aggregate" />
+<meta property="og:description" content="Get aggregated stats for a given page" />
 
 
 
@@ -103,45 +103,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set API key for the current session</h1>
+    <h1>Get aggregated stats for a given page</h1>
     
-    <div class="hidden name"><code>pa_set.Rd</code></div>
+    <div class="hidden name"><code>pa_get_aggregate.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Set API key for the current session</p>
+    <p>Get aggregated stats for a given page</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pa_set</span><span class='op'>(</span>base_url <span class='op'>=</span> <span class='cn'>NULL</span>, site_id <span class='op'>=</span> <span class='cn'>NULL</span>, key <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pa_get_aggregate</span><span class='op'>(</span>
+  period <span class='op'>=</span> <span class='st'>"30d"</span>,
+  metrics <span class='op'>=</span> <span class='st'>"visitors,pageviews,bounce_rate,visit_duration"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>base_url</th>
-      <td><p>The base URL of the Plausible instance. Typically https://plausible.io/ for hosted Plausible.</p></td>
+      <th>period</th>
+      <td><p>Period to include in the analysis, defaults to "30d". See examples as well as the the official documentation for valid values: https://plausible.io/docs/stats-api#time-periods</p></td>
     </tr>
     <tr>
-      <th>site_id</th>
-      <td><p>Corresponds to the domain of your website.</p></td>
-    </tr>
-    <tr>
-      <th>key</th>
-      <td><p>A character string used for authentication. Can be retrieved from the user settings in Plausible Analytics.</p></td>
+      <th>metrics</th>
+      <td><p>Defauts to all available metrics. See documentation for more details: https://plausible.io/docs/stats-api#get-apiv1statsaggregate</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisibly returns input as list.</p>
+    <p>A data frame.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>pa_set</span><span class='op'>(</span>
-  base_url <span class='op'>=</span> <span class='st'>"https://plausible.io/"</span>,
-  site_id <span class='op'>=</span> <span class='st'>"example.com"</span>,
-  key <span class='op'>=</span> <span class='st'>"actual_key_here"</span>
-<span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>pa_get_aggregate</span><span class='op'>(</span>period <span class='op'>=</span> <span class='st'>"6mo"</span>, page <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
