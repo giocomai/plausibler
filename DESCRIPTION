@@ -1,6 +1,6 @@
 Package: plausibler
 Title: Access Plausible Analytics API
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person(given = "Giorgio",
            family = "Comai",
@@ -18,4 +18,5 @@ Imports:
     jsonlite,
     magrittr,
     purrr,
-    tibble
+    tibble,
+    tidyr
