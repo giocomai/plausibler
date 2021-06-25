@@ -71,6 +71,21 @@ pa_get_timeseries(period = "30d")
 pa_get_timeseries(period = "custom&date=2021-06-01,2021-06-07")
 ```
 
+Here are some example for breakdown of stats:
+
+``` r
+pa_get_breakdown(period = "30d", property = "event:page")
+
+# which is exactly the same as:
+pa_get_top_pages()
+```
+
+It is also possible to get aggregate stats:
+
+``` r
+pa_get_aggregate()
+```
+
 ## Future development
 
   - more wrapper functions
