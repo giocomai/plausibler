@@ -2,10 +2,21 @@
 #'
 #' For details, consult the official documentation: https://plausible.io/docs/stats-api
 #'
-#' @param endpoint Endpoint as described in the official documentation, e.g. "/api/v1/stats/timeseries".
-#' @param parameters A named list with parameters (see example). If you want to run more complex queries you can leave this NULL, and include the whole call (Plausible instance URL, endpoint, and query) to the parameter `full_url`.
-#' @param full_url Defaults to NULL. If given, takes precedence over other parameters as well as settings. See examples, as well as examples in the official documentation.
-#'
+#' @param endpoint Endpoint as described in the official documentation, e.g.
+#'   "/api/v1/stats/timeseries".
+#' @param parameters A named list with parameters (see example). If you want to
+#'   run more complex queries you can leave this NULL, and include the whole
+#'   call (Plausible instance URL, endpoint, and query) to the parameter
+#'   `full_url`.
+#' @param full_url Defaults to NULL. If given, takes precedence over other
+#'   parameters as well as settings. See examples, as well as examples in the
+#'   official documentation.
+#' @param filters Optional, defaults to NULL. If given, it must be given in the
+#'   form "visit:browser==Firefox;visit:country==FR", or as a named vector (see
+#'   examples). Use ";" to separate multiple filtering criteria. For details,
+#'   see the \href{API documentation on
+#'   filtering}{https://plausible.io/docs/stats-api#filtering} for reference.
+#' 
 #' @return A data frame (a tibble) with results.
 #' @export
 #'
@@ -22,7 +33,8 @@
 #' }
 pa_get <- function(endpoint,
                    parameters = NULL,
-                   full_url = NULL) {
+                   full_url = NULL,
+                   filters = NULL) {
   pa_settings <- pa_set()
 
   if (is.null(full_url) == TRUE) {
@@ -50,6 +62,23 @@ pa_get <- function(endpoint,
         paste(params_c, collapse = "&")
       )
     }
+    
+    if (is.null(filters)==FALSE) {
+      filters_c <- purrr::map2_chr(
+        .x = filters,
+        .y = names(filters),
+        .f = function(x, y) {
+          paste0(y, "==", paste(x, collapse = "|"))
+        }
+      )
+      
+      url_request <- paste0(
+        url_request,
+        "&filters=",
+        paste(filters_c, collapse = ";")
+      )
+    }
+    
   } else {
     url_request <- full_url
   }
