@@ -4,11 +4,11 @@
 \alias{pa_set}
 \title{Set API key for the current session}
 \usage{
-pa_set(base_url = "https://plausible.io/", site_id = NULL, key = NULL)
+pa_set(base_url = NULL, site_id = NULL, key = NULL)
 }
 \arguments{
-\item{base_url}{The base URL of the Plausible instance. Defaults to
-https://plausible.io/ - set to your own for self-hosted Plausible.}
+\item{base_url}{The base URL of the Plausible instance. Set to
+https://plausible.io/ - or to your own domain for self-hosted Plausible.}
 
 \item{site_id}{Corresponds to the domain of your website.}
 
