@@ -37,7 +37,7 @@ pa_get_page_timeseries <- function(period = "30d",
     endpoint = "/api/v1/stats/timeseries",
     parameters = list(
       period = period,
-      filters = stringr::str_c("event:page==", page)
+      filters = paste0("event:page==", page)
     )
   ) %>%
     dplyr::transmute(page = page, date, visitors)

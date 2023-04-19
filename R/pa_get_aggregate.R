@@ -13,7 +13,7 @@
 pa_get_aggregate <- function(period = "30d",
                              metrics = "visitors,pageviews,bounce_rate,visit_duration") {
   if (length(metrics) > 1) {
-    metrics <- stringr::str_c(metrics, collapse = ",")
+    metrics <- paste0(metrics, collapse = ",")
   }
 
   pa_get(
@@ -45,7 +45,7 @@ pa_get_page_aggregate <- function(period = "30d",
     endpoint = "/api/v1/stats/aggregate",
     parameters = list(
       period = period,
-      filters = stringr::str_c("event:page==", page)
+      filters = paste0("event:page==", page)
     )
   ) %>%
     tidyr::unnest(cols = visitors) %>%
