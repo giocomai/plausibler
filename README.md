@@ -4,7 +4,6 @@
 # plausibler
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 `plausibler` is a wrapper for the R programming language to the
@@ -50,7 +49,7 @@ pa_get(full_url = "https://plausible.io/api/v1/stats/timeseries?site_id=$SITE_ID
 ```
 
 Keep in mind that you will still need to set the key with `pa_set()`.
-Replace $SITE\_ID with your domain in this example, or check out the
+Replace \$SITE_ID with your domain in this example, or check out the
 [official API documentation](https://plausible.io/docs/stats-api) for
 many more examples.
 
@@ -86,8 +85,30 @@ It is also possible to get aggregate stats:
 pa_get_aggregate()
 ```
 
+## Breakdown by multiple properties
+
+As breakdown by multiple properties has not been natively implemented in
+the API, `plausibler` offers a convenience function that tries to
+achieve the same result by repeated queries, iterating through each
+occurrence of a property on a given date.
+
+The following should get the number of visitors from each source to each
+page on each date of the last week.
+
+``` r
+pa_get_properties_by_date(property1 = "visit:source",
+                          property2 = "event:page")
+```
+
+Depending on the number of “sources” recorded, this is likely to be
+slow. In order to speed up the process and reduce load on the API, by
+default this function caches data in a SQLite database created within
+the current working directory. Only data for full days should be cached
+(i.e. it’s safer not to include the current date, even if this is not
+enforced).
+
 ## Future development
 
-  - more wrapper functions
-  - maybe, local caching with sqlite
-  - suggestions? Open an issue
+- more wrapper functions
+- maybe, more extensive local caching with sqlite
+- suggestions? Open an issue
