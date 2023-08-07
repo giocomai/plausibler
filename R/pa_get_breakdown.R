@@ -19,19 +19,21 @@
 #'   examples). Use ";" to separate multiple filtering criteria. For details,
 #'   see the \href{API documentation on
 #'   filtering}{https://plausible.io/docs/stats-api#filtering} for reference.
-#'   
+#'
 #' @return A data frame.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' pa_get_breakdown(period = "30d", property = "event:page")
-#' 
+#'
 #' ## With filters, e.g. to see all referrers to the given url:
-#' 
-#' pa_get_breakdown(period = "30d",
-#'                  property = "visit:referrer",
-#'                  filters = list(`event:page` = "/berlin/"))
+#'
+#' pa_get_breakdown(
+#'   period = "30d",
+#'   property = "visit:referrer",
+#'   filters = list(`event:page` = "/berlin/")
+#' )
 #' }
 pa_get_breakdown <- function(period = "30d",
                              property = "event:page",

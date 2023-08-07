@@ -16,7 +16,7 @@
 #'   examples). Use ";" to separate multiple filtering criteria. For details,
 #'   see the \href{API documentation on
 #'   filtering}{https://plausible.io/docs/stats-api#filtering} for reference.
-#' 
+#'
 #' @return A data frame (a tibble) with results.
 #' @export
 #'
@@ -34,8 +34,7 @@
 pa_get <- function(endpoint,
                    parameters = NULL,
                    filters = NULL,
-                   full_url = NULL
-                   ) {
+                   full_url = NULL) {
   pa_settings <- pa_set()
 
   if (is.null(full_url) == TRUE) {
@@ -63,9 +62,9 @@ pa_get <- function(endpoint,
         paste(params_c, collapse = "&")
       )
     }
-    
-    
-    if (is.null(filters)==FALSE) {
+
+
+    if (is.null(filters) == FALSE) {
       filters_c <- purrr::map2_chr(
         .x = filters,
         .y = names(filters),
@@ -73,20 +72,19 @@ pa_get <- function(endpoint,
           paste0(y, "==", paste(x, collapse = "|"))
         }
       )
-      
+
       url_request <- paste0(
         url_request,
         "&filters=",
         paste(filters_c, collapse = ";")
       )
     }
-    
   } else {
     url_request <- full_url
   }
 
   url_request <- URLencode(URL = url_request, reserved = FALSE)
-  
+
   req <- curl::curl_fetch_memory(url_request,
     handle = pa_create_handler()
   )

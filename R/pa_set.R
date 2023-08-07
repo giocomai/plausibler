@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' 
+#'
 #' pa_set(
 #'   base_url = "https://plausible.io/",
 #'   site_id = "example.com",

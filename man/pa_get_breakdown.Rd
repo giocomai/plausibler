@@ -49,8 +49,10 @@ pa_get_breakdown(period = "30d", property = "event:page")
 
 ## With filters, e.g. to see all referrers to the given url:
 
-pa_get_breakdown(period = "30d",
-                 property = "visit:referrer",
-                 filters = list(`event:page` = "/berlin/"))
+pa_get_breakdown(
+  period = "30d",
+  property = "visit:referrer",
+  filters = list(`event:page` = "/berlin/")
+)
 }
 }

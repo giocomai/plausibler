@@ -37,8 +37,8 @@
 #'
 #' @examples
 #' \dontrun{
-#'  pa_get_properties_by_date()
-#'  pa_get_properties_by_date(property1 = "visit:referrer")
+#' pa_get_properties_by_date()
+#' pa_get_properties_by_date(property1 = "visit:referrer")
 #' }
 pa_get_properties_by_date <- function(property1 = "visit:source",
                                       property2 = "event:page",
@@ -165,8 +165,8 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
           }
 
           pg_bd_df[["date"]] <- current_date
-          pg_bd_df[[sub(pattern = ".+:", replacement = "", x = property1)]] <-  current_item
-          
+          pg_bd_df[[sub(pattern = ".+:", replacement = "", x = property1)]] <- current_item
+
           current_p2_df <- pg_bd_df %>%
             dplyr::select(3, 4, 1, 2)
 
