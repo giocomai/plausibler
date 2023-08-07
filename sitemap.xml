@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://giocomai.github.io/plausibler/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://giocomai.github.io/plausibler/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://giocomai.github.io/plausibler/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://giocomai.github.io/plausibler/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://giocomai.github.io/plausibler/index.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_create_handler.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_create_handler.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_get.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_get.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_get_aggregate.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_get_aggregate.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_get_breakdown.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_get_breakdown.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_get_page_aggregate.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_get_page_aggregate.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_get_page_timeseries.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_get_page_timeseries.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_get_properties_by_date.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_get_properties_by_date.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_get_timeseries.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_get_timeseries.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_get_top_pages.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_get_top_pages.html</loc>
   </url>
   <url>
-    <loc>/reference/pa_set.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pa_set.html</loc>
   </url>
   <url>
-    <loc>/reference/pipe.html</loc>
+    <loc>https://giocomai.github.io/plausibler/reference/pipe.html</loc>
   </url>
 </urlset>
