@@ -34,9 +34,11 @@ your Plausible Analytics instance (if not self-hosted,
 and your API key.
 
 ``` r
-pa_set(base_url = "https://plausible.io/",
-       site_id = "example.com",
-       key= "actual_key_here")
+pa_set(
+  base_url = "https://plausible.io/",
+  site_id = "example.com",
+  key = "actual_key_here"
+)
 ```
 
 You have then three main options to get data from the API.
@@ -57,8 +59,10 @@ If you prefer to stick to a syntax closer to what you would typically
 use in R, you can achieve the same as above with the following:
 
 ``` r
-pa_get(endpoint = "/api/v1/stats/timeseries",
-       parameters = list(period = "6mo"))
+pa_get(
+  endpoint = "/api/v1/stats/timeseries",
+  parameters = list(period = "6mo")
+)
 ```
 
 Finally, you can use wrapper functions, so you don’t need to remember
@@ -79,6 +83,39 @@ pa_get_breakdown(period = "30d", property = "event:page")
 pa_get_top_pages()
 ```
 
+If you are interested in more metrics, see:
+
+``` r
+pa_get_breakdown(period = "30d",
+                 property = "event:page",
+                 metrics = c("visitors",
+                             "pageviews",
+                             "bounce_rate",
+                             "visit_duration"),
+                 limit = 1000)
+```
+
+Or, say, combining properties, metrics, and filters, see the referrers
+for visits to a given page:
+
+``` r
+pa_get_breakdown(period = "6mo",
+                 property = "visit:referrer",
+                 metrics = c("visitors",
+                             "pageviews",
+                             "bounce_rate",
+                             "visit_duration"),
+                 limit = 1000, 
+                 filters = list(`event:page` = "/example/"))
+```
+
+It is possible to query for custom periods:
+
+``` r
+pa_get_breakdown(period = "custom&date=2023-04-01,2023-06-30",
+                 property = "event:page")
+```
+
 It is also possible to get aggregate stats:
 
 ``` r
@@ -96,8 +133,10 @@ The following should get the number of visitors from each source to each
 page on each date of the last week.
 
 ``` r
-pa_get_properties_by_date(property1 = "visit:source",
-                          property2 = "event:page")
+pa_get_properties_by_date(
+  property1 = "visit:source",
+  property2 = "event:page"
+)
 ```
 
 Depending on the number of “sources” recorded, this is likely to be
