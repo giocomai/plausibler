@@ -93,7 +93,7 @@ pa_get_breakdown(period = "30d",
                  limit = 1000)
 ```
 
-Or, say, combining properties, metrics, and filters, see the referrers for visits to a given page:
+Or, say, combining properties, metrics, and filters, to see the referrers for visits to a given page:
 
 ```{r, eval = FALSE}
 pa_get_breakdown(period = "6mo",
