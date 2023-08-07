@@ -23,3 +23,4 @@ Imports:
 Suggests: 
     RSQLite,
     dplyr
+URL: https://giocomai.github.io/plausibler/
