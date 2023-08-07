@@ -33,8 +33,9 @@
 #' }
 pa_get <- function(endpoint,
                    parameters = NULL,
-                   full_url = NULL,
-                   filters = NULL) {
+                   filters = NULL,
+                   full_url = NULL
+                   ) {
   pa_settings <- pa_set()
 
   if (is.null(full_url) == TRUE) {
@@ -52,7 +53,7 @@ pa_get <- function(endpoint,
         .x = parameters,
         .y = names(parameters),
         .f = function(x, y) {
-          paste0(y, "=", x)
+          paste0(y, "=", paste0(x, collapse = ","))
         }
       )
 
@@ -62,6 +63,7 @@ pa_get <- function(endpoint,
         paste(params_c, collapse = "&")
       )
     }
+    
     
     if (is.null(filters)==FALSE) {
       filters_c <- purrr::map2_chr(
