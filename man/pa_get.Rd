@@ -4,7 +4,7 @@
 \alias{pa_get}
 \title{Gets data from Plausible Analytics API}
 \usage{
-pa_get(endpoint, parameters = NULL, full_url = NULL, filters = NULL)
+pa_get(endpoint, parameters = NULL, filters = NULL, full_url = NULL)
 }
 \arguments{
 \item{endpoint}{Endpoint as described in the official documentation, e.g.
@@ -15,15 +15,15 @@ run more complex queries you can leave this NULL, and include the whole
 call (Plausible instance URL, endpoint, and query) to the parameter
 \code{full_url}.}
 
-\item{full_url}{Defaults to NULL. If given, takes precedence over other
-parameters as well as settings. See examples, as well as examples in the
-official documentation.}
-
 \item{filters}{Optional, defaults to NULL. If given, it must be given in the
 form "visit:browser==Firefox;visit:country==FR", or as a named vector (see
 examples). Use ";" to separate multiple filtering criteria. For details,
 see the \href{API documentation on
 filtering}{https://plausible.io/docs/stats-api#filtering} for reference.}
+
+\item{full_url}{Defaults to NULL. If given, takes precedence over other
+parameters as well as settings. See examples, as well as examples in the
+official documentation.}
 }
 \value{
 A data frame (a tibble) with results.

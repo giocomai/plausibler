@@ -6,6 +6,10 @@
 #' @param property Property to break down the stats by. For a full list of
 #'   available properties, see the official documentation:
 #'   https://plausible.io/docs/stats-api#properties
+#' @param metrics Default to "visitors". Can be set, for example, to
+#'   `c("visitors", "pageviews", "bounce_rate", "visit_duration")`. For a full
+#'   list of available metrics and their description, see the official
+#'   documentation:  https://plausible.io/docs/stats-api#metrics
 #' @param limit Limit the number of results. Maximum value is 1000. Defaults to
 #'   100. If you want to get more than 1000 results, you can make multiple
 #'   requests and paginate the results by specifying the page parameter (e.g.
@@ -30,7 +34,8 @@
 #'                  filters = list(`event:page` = "/berlin/"))
 #' }
 pa_get_breakdown <- function(period = "30d",
-                             property,
+                             property = "event:page",
+                             metrics = "visitors",
                              limit = 100,
                              filters = NULL) {
   pa_get(
@@ -38,6 +43,7 @@ pa_get_breakdown <- function(period = "30d",
     parameters = list(
       period = period,
       property = property,
+      metrics = metrics,
       limit = limit
     ),
     filters = filters
