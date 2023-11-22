@@ -40,7 +40,7 @@ pa_get_breakdown <- function(period = "30d",
                              metrics = "visitors",
                              limit = 100,
                              filters = NULL) {
-  pa_get(
+  out_df <- pa_get(
     endpoint = "/api/v1/stats/breakdown",
     parameters = list(
       period = period,
@@ -50,6 +50,12 @@ pa_get_breakdown <- function(period = "30d",
     ),
     filters = filters
   )
+
+  if (nrow(out_df) == 0) {
+    return(invisible(NULL))
+  } else {
+    return(out_df)
+  }
 }
 
 #' Get most visited pages for a given period
