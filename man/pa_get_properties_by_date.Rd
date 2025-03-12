@@ -12,6 +12,7 @@ pa_get_properties_by_date(
   property1_to_exclude = character(),
   limit = 1000,
   cache = TRUE,
+  only_cached = FALSE,
   wait = 0.1
 )
 }
@@ -36,6 +37,9 @@ database, stored under a folder named as the website in the current working
 directory. The sqlite database is named after the chosen properties, hence
 there shouldn't be problems in caching data for different websites or
 different combinations of properties.}
+
+\item{only_cached}{Defaults to FALSE. If TRUE, only data cached locally will
+be retrieved.}
 
 \item{wait}{Numeric, defaults to 0.1. As this function is likely to make a
 high number of requests to the API, a small pause is added between each

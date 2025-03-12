@@ -24,6 +24,8 @@
 #'   directory. The sqlite database is named after the chosen properties, hence
 #'   there shouldn't be problems in caching data for different websites or
 #'   different combinations of properties.
+#' @param only_cached Defaults to FALSE. If TRUE, only data cached locally will
+#'   be retrieved.
 #' @param wait Numeric, defaults to 0.1. As this function is likely to make a
 #'   high number of requests to the API, a small pause is added between each
 #'   request to reduce load on the servers.  description
@@ -47,6 +49,7 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
                                       property1_to_exclude = character(),
                                       limit = 1000,
                                       cache = TRUE,
+                                      only_cached = FALSE,
                                       wait = 0.1) {
   pa_settings <- pa_set()
 
@@ -102,10 +105,20 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
       )
     }
 
-    previous_dates_v <- DBI::dbReadTable(
+    previous_data_db <- DBI::dbReadTable(
       conn = db,
       name = current_table
-    ) %>%
+    )
+
+    if (only_cached == TRUE) {
+      return(
+        previous_data_db %>%
+          dplyr::filter(date %in% all_dates_v) %>%
+          dplyr::collect()
+      )
+    }
+
+    previous_dates_v <- previous_data_db %>%
       dplyr::distinct(date) %>%
       dplyr::pull(date)
   } else {
