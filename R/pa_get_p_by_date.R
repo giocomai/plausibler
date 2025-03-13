@@ -114,7 +114,8 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
       return(
         previous_data_db %>%
           dplyr::filter(date %in% all_dates_v) %>%
-          dplyr::collect()
+          dplyr::collect() |> 
+          tibble::as_tibble()
       )
     }
 
@@ -138,11 +139,17 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
         current_date
       )
 
-      current_p1_df <- pa_get_breakdown(
+      current_breakdown <- pa_get_breakdown(
         period = current_period_string,
         property = property1,
         limit = limit
-      ) %>%
+      )
+      
+      if (is.null(current_breakdown)) {
+        return(NULL)
+      }
+      
+      current_p1_df <- current_breakdown %>%
         dplyr::mutate(visitors = as.numeric(visitors))
 
       current_p1_df <- current_p1_df[!(current_p1_df[[1]] %in% property1_to_exclude), ]
