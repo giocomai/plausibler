@@ -12,7 +12,7 @@ pa_get_aggregate(
 \arguments{
 \item{period}{Period to include in the analysis, defaults to "30d". See
 examples as well as the the official documentation for valid values:
-https://plausible.io/docs/stats-api#time-periods}
+\url{https://plausible.io/docs/stats-api#time-dimensions}}
 
 \item{metrics}{Defaults to all available metrics. See documentation for more
 details: https://plausible.io/docs/stats-api#get-apiv1statsaggregate}
