@@ -2,7 +2,7 @@
 % Please edit documentation in R/pa_get_aggregate.R
 \name{pa_get_aggregate}
 \alias{pa_get_aggregate}
-\title{Get aggregated stats for a given page}
+\title{Get aggregated stats for a given website}
 \usage{
 pa_get_aggregate(
   period = "30d",
@@ -10,18 +10,21 @@ pa_get_aggregate(
 )
 }
 \arguments{
-\item{period}{Period to include in the analysis, defaults to "30d". See examples as well as the the official documentation for valid values: https://plausible.io/docs/stats-api#time-periods}
+\item{period}{Period to include in the analysis, defaults to "30d". See
+examples as well as the the official documentation for valid values:
+https://plausible.io/docs/stats-api#time-periods}
 
-\item{metrics}{Defauts to all available metrics. See documentation for more details: https://plausible.io/docs/stats-api#get-apiv1statsaggregate}
+\item{metrics}{Defaults to all available metrics. See documentation for more
+details: https://plausible.io/docs/stats-api#get-apiv1statsaggregate}
 }
 \value{
 A data frame.
 }
 \description{
-Get aggregated stats for a given page
+Get aggregated stats for a given website
 }
 \examples{
 \dontrun{
-pa_get_aggregate(period = "6mo", page = "/")
+ pa_get_aggregate(period = "6mo")
 }
 }

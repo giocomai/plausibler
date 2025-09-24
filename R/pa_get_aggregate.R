@@ -1,17 +1,22 @@
-#' Get aggregated stats for a given page
+#' Get aggregated stats for a given website
 #'
-#' @param period Period to include in the analysis, defaults to "30d". See examples as well as the the official documentation for valid values: https://plausible.io/docs/stats-api#time-periods
-#' @param metrics Defauts to all available metrics. See documentation for more details: https://plausible.io/docs/stats-api#get-apiv1statsaggregate
+#' @param period Period to include in the analysis, defaults to "30d". See
+#'   examples as well as the the official documentation for valid values:
+#'   https://plausible.io/docs/stats-api#time-periods
+#' @param metrics Defaults to all available metrics. See documentation for more
+#'   details: https://plausible.io/docs/stats-api#get-apiv1statsaggregate
 #'
 #' @return A data frame.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' pa_get_aggregate(period = "6mo", page = "/")
+#'  pa_get_aggregate(period = "6mo")
 #' }
-pa_get_aggregate <- function(period = "30d",
-                             metrics = "visitors,pageviews,bounce_rate,visit_duration") {
+pa_get_aggregate <- function(
+  period = "30d",
+  metrics = "visitors,pageviews,bounce_rate,visit_duration"
+) {
   if (length(metrics) > 1) {
     metrics <- paste0(metrics, collapse = ",")
   }
@@ -39,8 +44,7 @@ pa_get_aggregate <- function(period = "30d",
 #' \dontrun{
 #' pa_get_page_aggregate(period = "6mo", page = "/")
 #' }
-pa_get_page_aggregate <- function(period = "30d",
-                                  page) {
+pa_get_page_aggregate <- function(period = "30d", page) {
   pa_get(
     endpoint = "/api/v1/stats/aggregate",
     parameters = list(
