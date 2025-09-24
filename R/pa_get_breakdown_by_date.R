@@ -29,7 +29,7 @@ pa_get_breakdown_by_date <- function(property = "event:page",
     from = start_date,
     to = end_date,
     by = "day"
-  ) %>%
+  ) |>
     as.character()
 
   if (cache == TRUE) {
@@ -49,7 +49,7 @@ pa_get_breakdown_by_date <- function(property = "event:page",
           "_",
           metric,
           ".sqlite"
-        ) %>%
+        ) |>
           fs::path_sanitize()
       )
     )
@@ -61,7 +61,7 @@ pa_get_breakdown_by_date <- function(property = "event:page",
         a = NA_character_,
         b = NA_character_,
         c = NA_real_
-      ) %>%
+      ) |>
         tidyr::drop_na()
 
       colnames(return_df) <- c(
@@ -80,8 +80,8 @@ pa_get_breakdown_by_date <- function(property = "event:page",
     previous_dates_v <- DBI::dbReadTable(
       conn = db,
       name = current_table
-    ) %>%
-      dplyr::distinct(date) %>%
+    ) |>
+      dplyr::distinct(date) |>
       dplyr::pull(date)
   } else {
     previous_dates_v <- character()
@@ -110,8 +110,8 @@ pa_get_breakdown_by_date <- function(property = "event:page",
       if (is.null(current_df)) {
         return(NULL)
       } else {
-        current_df <- current_df %>%
-          dplyr::mutate(date = as.character(current_date)) %>%
+        current_df <- current_df |>
+          dplyr::mutate(date = as.character(current_date)) |>
           dplyr::select(3, 1, 2)
       }
 
@@ -131,22 +131,22 @@ pa_get_breakdown_by_date <- function(property = "event:page",
 
       current_df
     }
-  ) %>%
+  ) |>
     purrr::list_rbind()
 
   if (cache == TRUE) {
     output_df <- DBI::dbReadTable(
       conn = db,
       name = current_table
-    ) %>%
-      dplyr::collect() %>%
+    ) |>
+      dplyr::collect() |>
       tibble::as_tibble()
   } else {
     output_df <- all_new_df
   }
 
-  output_df %>%
-    dplyr::mutate(date = as.Date(date)) %>%
+  output_df |>
+    dplyr::mutate(date = as.Date(date)) |>
     dplyr::filter(date >= start_date, date <= end_date) |>
     dplyr::arrange(date)
 }

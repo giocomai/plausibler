@@ -25,6 +25,6 @@ Get aggregated stats for a given website
 }
 \examples{
 \dontrun{
- pa_get_aggregate(period = "6mo")
+  pa_get_aggregate(period = "6mo")
 }
 }

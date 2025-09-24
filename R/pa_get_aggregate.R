@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'  pa_get_aggregate(period = "6mo")
+#'   pa_get_aggregate(period = "6mo")
 #' }
 pa_get_aggregate <- function(
   period = "30d",
@@ -27,7 +27,7 @@ pa_get_aggregate <- function(
       period = period,
       metrics = metrics
     )
-  ) %>%
+  ) |>
     tidyr::unnest(cols = dplyr::everything())
 }
 
@@ -42,7 +42,7 @@ pa_get_aggregate <- function(
 #'
 #' @examples
 #' \dontrun{
-#' pa_get_page_aggregate(period = "6mo", page = "/")
+#'   pa_get_page_aggregate(period = "6mo", page = "/")
 #' }
 pa_get_page_aggregate <- function(period = "30d", page) {
   pa_get(
@@ -51,7 +51,7 @@ pa_get_page_aggregate <- function(period = "30d", page) {
       period = period,
       filters = paste0("event:page==", page)
     )
-  ) %>%
-    tidyr::unnest(cols = visitors) %>%
+  ) |>
+    tidyr::unnest(cols = visitors) |>
     dplyr::transmute(page = page, visitors = visitors)
 }

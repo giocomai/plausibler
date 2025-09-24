@@ -57,7 +57,7 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
     from = start_date,
     to = end_date,
     by = "day"
-  ) %>%
+  ) |>
     as.character()
 
   if (cache == TRUE) {
@@ -75,7 +75,7 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
           "_",
           property2,
           ".sqlite"
-        ) %>%
+        ) |>
           fs::path_sanitize()
       )
     )
@@ -88,7 +88,7 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
         b = NA_character_,
         c = NA_character_,
         d = NA_real_
-      ) %>%
+      ) |>
         tidyr::drop_na()
 
       colnames(return_df) <- c(
@@ -112,15 +112,15 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
 
     if (only_cached == TRUE) {
       return(
-        previous_data_db %>%
-          dplyr::filter(date %in% all_dates_v) %>%
+        previous_data_db |>
+          dplyr::filter(date %in% all_dates_v) |>
           dplyr::collect() |> 
           tibble::as_tibble()
       )
     }
 
-    previous_dates_v <- previous_data_db %>%
-      dplyr::distinct(date) %>%
+    previous_dates_v <- previous_data_db |>
+      dplyr::distinct(date) |>
       dplyr::pull(date)
   } else {
     previous_dates_v <- character()
@@ -149,7 +149,7 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
         return(NULL)
       }
       
-      current_p1_df <- current_breakdown %>%
+      current_p1_df <- current_breakdown |>
         dplyr::mutate(visitors = as.numeric(visitors))
 
       current_p1_df <- current_p1_df[!(current_p1_df[[1]] %in% property1_to_exclude), ]
@@ -173,7 +173,7 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
             return_df <- tibble::tibble(
               a = NA_character_,
               b = NA_integer_
-            ) %>%
+            ) |>
               tidyr::drop_na()
 
             colnames(return_df) <- c(
@@ -187,14 +187,14 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
           pg_bd_df[["date"]] <- current_date
           pg_bd_df[[sub(pattern = ".+:", replacement = "", x = property1)]] <- current_item
 
-          current_p2_df <- pg_bd_df %>%
+          current_p2_df <- pg_bd_df |>
             dplyr::select(3, 4, 1, 2)
 
           Sys.sleep(time = wait)
 
           current_p2_df
         }
-      ) %>%
+      ) |>
         purrr::list_rbind()
 
       if (cache == TRUE) {
@@ -207,21 +207,21 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
 
       current_date_items_df
     }
-  ) %>%
+  ) |>
     purrr::list_rbind()
 
   if (cache == TRUE) {
     output_df <- DBI::dbReadTable(
       conn = db,
       name = current_table
-    ) %>%
-      dplyr::collect() %>%
+    ) |>
+      dplyr::collect() |>
       tibble::as_tibble()
   } else {
     output_df <- all_new_df
   }
 
-  output_df %>%
-    dplyr::mutate(date = as.Date(date)) %>%
+  output_df |>
+    dplyr::mutate(date = as.Date(date)) |>
     dplyr::filter(date >= start_date, date <= end_date)
 }

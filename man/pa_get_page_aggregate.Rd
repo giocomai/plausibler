@@ -19,6 +19,6 @@ Get aggregated stats for a given page
 }
 \examples{
 \dontrun{
-pa_get_page_aggregate(period = "6mo", page = "/")
+  pa_get_page_aggregate(period = "6mo", page = "/")
 }
 }

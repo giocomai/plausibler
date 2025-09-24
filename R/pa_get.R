@@ -97,7 +97,7 @@ pa_get <- function(endpoint,
     stop(content_json[[1]])
   }
 
-  results_df <- content_json[["results"]] %>%
+  results_df <- content_json[["results"]] |>
     tibble::as_tibble()
 
   if ("date" %in% colnames(results_df)) {

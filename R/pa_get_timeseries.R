@@ -39,6 +39,6 @@ pa_get_page_timeseries <- function(period = "30d",
       period = period,
       filters = paste0("event:page==", page)
     )
-  ) %>%
+  ) |>
     dplyr::transmute(page = page, date, visitors)
 }
