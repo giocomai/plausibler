@@ -1,8 +1,8 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-03-13T08:27Z
+last_built: 2025-09-24T09:44Z
 urls:
   reference: https://giocomai.github.io/plausibler/reference
   article: https://giocomai.github.io/plausibler/articles
