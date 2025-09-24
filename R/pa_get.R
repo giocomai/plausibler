@@ -31,10 +31,12 @@
 #' # N.B. You still need to set the key with pa_set(). Replace $SITE_ID with your domain
 #' pa_get(full_url = "https://plausible.io/api/v1/stats/timeseries?site_id=$SITE_ID&period=6mo")
 #' }
-pa_get <- function(endpoint,
-                   parameters = NULL,
-                   filters = NULL,
-                   full_url = NULL) {
+pa_get <- function(
+  endpoint,
+  parameters = NULL,
+  filters = NULL,
+  full_url = NULL
+) {
   pa_settings <- pa_set()
 
   if (is.null(full_url) == TRUE) {
@@ -63,7 +65,6 @@ pa_get <- function(endpoint,
       )
     }
 
-
     if (is.null(filters) == FALSE) {
       filters_c <- purrr::map2_chr(
         .x = filters,
@@ -85,16 +86,14 @@ pa_get <- function(endpoint,
 
   url_request <- URLencode(URL = url_request, reserved = FALSE)
 
-  req <- curl::curl_fetch_memory(url_request,
-    handle = pa_create_handler()
-  )
+  req <- curl::curl_fetch_memory(url_request, handle = pa_create_handler())
 
   content <- rawToChar(req$content)
 
   content_json <- jsonlite::fromJSON(content)
 
   if (length(content_json) == 1 & names(content_json) == "error") {
-    stop(content_json[[1]])
+    cli::cli_abort(content_json[[1]])
   }
 
   results_df <- content_json[["results"]] |>
