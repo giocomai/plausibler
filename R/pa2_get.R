@@ -36,7 +36,7 @@ pa2_get <- function(
     metrics = list(metrics),
     date_range = date_range,
     filters = filters,
-    dimensions = dimensions,
+    dimensions = list(dimensions),
     order_by = order_by,
     include = include,
     pagination = pagination
