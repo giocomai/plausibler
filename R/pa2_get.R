@@ -3,11 +3,17 @@
 #' For details, consult the \href{official
 #' documentation}{https://plausible.io/docs/stats-api}.
 #'
-#' @param filters Optional, defaults to NULL. If given, it must be given in the
-#'   form "visit:browser==Firefox;visit:country==FR", or as a named vector (see
-#'   examples). Use ";" to separate multiple filtering criteria. For details,
+#' @param date_range A character vector of length 1, or a list of two dates or
+#'   times. Valid values include: "day", "7d", "28d", "30d", "91d", "month",
+#'   "6mo", "12mo", "year", "all". Custom date ranges can be given as a list of
+#'   two dates e.g. `list("2024-01-01", "2024-07-01")`. See examples, and the
+#'   \href{official
+#' documentation}(https://plausible.io/docs/stats-api#date_range) for details.
+#' @param filters Optional, defaults to NULL. If given, it must be a list of
+#'   three (operator, dimension, clauses) or four (operator, dimension, clauses,
+#'   modifiers) elements. See examples. For details,
 #'   see the \href{API documentation on
-#'   filtering}{https://plausible.io/docs/stats-api#filters-} for reference.
+#'   filtering}{https://plausible.io/docs/stats-api#filters-}.
 #'
 #' @return A named list, with three elements: `results`, `meta`, and `query`.
 #' @export
@@ -15,8 +21,32 @@
 #' @examples
 #' \dontrun{
 #' pa2_get(
-#'     date_range = "30d",
-#'     metrics = "visits",
+#'   date_range = "30d",
+#'   metrics = "visits",
+#' )
+#'
+#' pa2_get(
+#'   date_range = "7d",
+#'   metrics = c("visits", "visitors"),
+#'   dimensions = c("time:day", "event:page"),
+#'   include = list(total_rows = TRUE)
+#' )
+#'
+#' ## Customise number of results and explore pagination
+#' pa2_get(
+#'   date_range = "7d",
+#'   metrics = c("visits", "visitors"),
+#'   dimensions = c("time:day", "event:page"),
+#'   include = list(total_rows = TRUE),
+#'   pagination = list(limit = 10,
+#'                     offset = 0) # increase offset to get following pages
+#' )
+#'
+#' ## Date range between dates
+#' pa2_get(
+#'   date_range = list(Sys.Date() - 8, Sys.Date() - 1),
+#'   metrics = c("visits", "visitors"),
+#'   dimensions = c("time:day", "event:page")
 #' )
 #' }
 pa2_get <- function(
@@ -31,12 +61,20 @@ pa2_get <- function(
 ) {
   pa_settings <- pa_get_settings(site_id = site_id)
 
+  if (length(metrics) == 1) {
+    metrics <- list(metrics)
+  }
+
+  if (length(dimensions) == 1) {
+    dimensions <- list(dimensions)
+  }
+
   request_list <- list(
     site_id = pa_settings[["site_id"]],
-    metrics = list(metrics),
+    metrics = metrics,
     date_range = date_range,
     filters = filters,
-    dimensions = list(dimensions),
+    dimensions = dimensions,
     order_by = order_by,
     include = include,
     pagination = pagination
