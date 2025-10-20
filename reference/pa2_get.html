@@ -53,11 +53,19 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-filters">filters<a class="anchor" aria-label="anchor" href="#arg-filters"></a></dt>
-<dd><p>Optional, defaults to NULL. If given, it must be given in the
-form "visit:browser==Firefox;visit:country==FR", or as a named vector (see
-examples). Use ";" to separate multiple filtering criteria. For details,
-see the <a href="API%20documentation%20on%0Afiltering">https://plausible.io/docs/stats-api#filters-</a> for reference.</p></dd>
+<dl><dt id="arg-date-range">date_range<a class="anchor" aria-label="anchor" href="#arg-date-range"></a></dt>
+<dd><p>A character vector of length 1, or a list of two dates or
+times. Valid values include: "day", "7d", "28d", "30d", "91d", "month",
+"6mo", "12mo", "year", "all". Custom date ranges can be given as a list of
+two dates e.g. <code>list("2024-01-01", "2024-07-01")</code>. See examples, and the
+<a href="official%0Adocumentation">(https://plausible.io/docs/stats-api#date_range) for details.</a></p></dd>
+
+
+<dt id="arg-filters">filters<a class="anchor" aria-label="anchor" href="#arg-filters"></a></dt>
+<dd><p>Optional, defaults to NULL. If given, it must be a list of
+three (operator, dimension, clauses) or four (operator, dimension, clauses,
+modifiers) elements. See examples. For details,
+see the <a href="API%20documentation%20on%0Afiltering">https://plausible.io/docs/stats-api#filters-</a>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -69,8 +77,32 @@ see the <a href="API%20documentation%20on%0Afiltering">https://plausible.io/docs
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">pa2_get</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    date_range <span class="op">=</span> <span class="st">"30d"</span>,</span></span>
-<span class="r-in"><span>    metrics <span class="op">=</span> <span class="st">"visits"</span>,</span></span>
+<span class="r-in"><span>  date_range <span class="op">=</span> <span class="st">"30d"</span>,</span></span>
+<span class="r-in"><span>  metrics <span class="op">=</span> <span class="st">"visits"</span>,</span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">pa2_get</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  date_range <span class="op">=</span> <span class="st">"7d"</span>,</span></span>
+<span class="r-in"><span>  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"visits"</span>, <span class="st">"visitors"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  dimensions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"time:day"</span>, <span class="st">"event:page"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>total_rows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Customise number of results and explore pagination</span></span></span>
+<span class="r-in"><span><span class="fu">pa2_get</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  date_range <span class="op">=</span> <span class="st">"7d"</span>,</span></span>
+<span class="r-in"><span>  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"visits"</span>, <span class="st">"visitors"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  dimensions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"time:day"</span>, <span class="st">"event:page"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>total_rows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  pagination <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">10</span>,</span></span>
+<span class="r-in"><span>                    offset <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="co"># increase offset to get following pages</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Date range between dates</span></span></span>
+<span class="r-in"><span><span class="fu">pa2_get</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  date_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">8</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"visits"</span>, <span class="st">"visitors"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  dimensions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"time:day"</span>, <span class="st">"event:page"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
