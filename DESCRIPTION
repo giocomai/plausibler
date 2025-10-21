@@ -1,6 +1,6 @@
 Package: plausibler
 Title: Access Plausible Analytics API
-Version: 0.1.6
+Version: 0.1.7.9001
 Authors@R: 
     person(given = "Giorgio",
            family = "Comai",
