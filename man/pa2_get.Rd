@@ -21,7 +21,7 @@ times. Valid values include: "day", "7d", "28d", "30d", "91d", "month",
 "6mo", "12mo", "year", "all". Custom date ranges can be given as a list of
 two dates e.g. \code{list("2024-01-01", "2024-07-01")}. See examples, and the
 \href{official
-documentation}(https://plausible.io/docs/stats-api#date_range) for details.}
+documentation}{https://plausible.io/docs/stats-api#date_range} for details.}
 
 \item{filters}{Optional, defaults to NULL. If given, it must be a list of
 three (operator, dimension, clauses) or four (operator, dimension, clauses,
@@ -40,7 +40,7 @@ documentation}{https://plausible.io/docs/stats-api}.
 \dontrun{
 pa2_get(
   date_range = "30d",
-  metrics = "visits",
+  metrics = "visits"
 )
 
 pa2_get(
@@ -49,6 +49,8 @@ pa2_get(
   dimensions = c("time:day", "event:page"),
   include = list(total_rows = TRUE)
 )
+
+
 
 ## Customise number of results and explore pagination
 pa2_get(
@@ -59,12 +61,30 @@ pa2_get(
   pagination = list(limit = 10,
                     offset = 0) # increase offset to get following pages
 )
-
 ## Date range between dates
 pa2_get(
   date_range = list(Sys.Date() - 8, Sys.Date() - 1),
   metrics = c("visits", "visitors"),
   dimensions = c("time:day", "event:page")
+)
+
+
+## Notice that filters require nested lists, even if they are simple
+
+pa2_get(
+  date_range = list(Sys.Date() - 2, Sys.Date() - 1),
+  metrics = c("visits", "visitors"),
+  dimensions = c("time:day", "event:page"),
+  include = list(total_rows = TRUE),
+  filters = list(
+    list(
+      "is_not",
+      "visit:country_name",
+      list(
+        "China"
+      )
+    )
+  )
 )
 }
 }
