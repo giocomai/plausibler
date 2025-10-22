@@ -48,18 +48,29 @@ pa2_df <- function(response_l, long = FALSE) {
         purrr::pluck("dimensions") |>
         purrr::flatten_chr()
 
+      if (length(dimensions_values) == 0) {
+        dimensions_df <- NULL
+      } else {
+        dimensions_df <- tibble::tibble(
+          dimensions = dimensions_names,
+          values = dimensions_values
+        ) |>
+          tidyr::pivot_wider(names_from = dimensions, values_from = values)
+      }
+
       metrics_values <- current_result_l |>
         purrr::pluck("metrics") |>
         purrr::flatten_dbl()
 
+      metrics_df <- tibble::tibble(
+        metrics = metrics_names,
+        values = metrics_values
+      ) |>
+        tidyr::pivot_wider(names_from = metrics, values_from = values)
+
       dplyr::bind_cols(
-        tibble::tibble(
-          dimensions = dimensions_names,
-          values = dimensions_values
-        ) |>
-          tidyr::pivot_wider(names_from = dimensions, values_from = values),
-        tibble::tibble(metrics = metrics_names, values = metrics_values) |>
-          tidyr::pivot_wider(names_from = metrics, values_from = values)
+        dimensions_df,
+        metrics_df
       )
     }
   ) |>
