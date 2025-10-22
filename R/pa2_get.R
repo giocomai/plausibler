@@ -81,7 +81,14 @@ pa2_get <- function(
 ) {
   pa_settings <- pa_get_settings(site_id = site_id)
 
-  if (length(metrics) == 1) {
+  if (length(metrics) == 0) {
+    cli::cli_abort(
+      message = c(
+        x = "{.var metrics} not valid.",
+        i = "{.var metrics} must be a character vector or list of valid metrics."
+      )
+    )
+  } else if (length(metrics) == 1 & is.character(metrics)) {
     metrics <- list(metrics)
   }
 
