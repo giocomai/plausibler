@@ -1,15 +1,18 @@
 #' Get a breakdown of stats by a given property
 #'
 #' @param period Period to include in the analysis, defaults to "30d". See
-#'   examples as well as the the official documentation for valid values:
-#'   \url{https://plausible.io/docs/stats-api#time-dimensions}
+#'   examples as well as the
+#'   \href{https://plausible.io/docs/stats-api#time-dimensions}{time-dimensions
+#'   section of the official documentation} for valid values.
 #' @param property Property to break down the stats by. For a full list of
-#'   available properties, see the official documentation:
-#'   https://plausible.io/docs/stats-api#properties
+#'   available properties, see the
+#'   \href{https://plausible.io/docs/stats-api#properties}{properties section of
+#' the official documentation}.
 #' @param metrics Default to "visitors". Can be set, for example, to
 #'   `c("visitors", "pageviews", "bounce_rate", "visit_duration")`. For a full
-#'   list of available metrics and their description, see the official
-#'   documentation:  https://plausible.io/docs/stats-api#metrics
+#'   list of available metrics and their description, see the
+#'   \href{https://plausible.io/docs/stats-api#metrics}{metrics section of the
+#'   official documentation}.
 #' @param limit Limit the number of results. Maximum value is 1000. Defaults to
 #'   100. If you want to get more than 1000 results, you can make multiple
 #'   requests and paginate the results by specifying the page parameter (e.g.
@@ -17,8 +20,8 @@
 #' @param filters Optional, defaults to NULL. If given, it must be given in the
 #'   form "visit:browser==Firefox;visit:country==FR", or as a named vector (see
 #'   examples). Use ";" to separate multiple filtering criteria. For details,
-#'   see the \href{API documentation on
-#'   filtering}{https://plausible.io/docs/stats-api#filtering} for reference.
+#'   see the \href{https://plausible.io/docs/stats-api#filtering}{API
+#'   documentation on filtering} for reference.
 #'
 #' @return A data frame.
 #' @export

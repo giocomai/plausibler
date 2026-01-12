@@ -20,14 +20,14 @@ pa2_get(
 times. Valid values include: "day", "7d", "28d", "30d", "91d", "month",
 "6mo", "12mo", "year", "all". Custom date ranges can be given as a list of
 two dates e.g. \code{list("2024-01-01", "2024-07-01")}. See examples, and the
-\href{official
-documentation}{https://plausible.io/docs/stats-api#date_range} for details.}
+\href{https://plausible.io/docs/stats-api#date_range}{official
+documentation} for details.}
 
 \item{filters}{Optional, defaults to NULL. If given, it must be a list of
 three (operator, dimension, clauses) or four (operator, dimension, clauses,
 modifiers) elements. See examples. For details,
-see the \href{API documentation on
-filtering}{https://plausible.io/docs/stats-api#filters-}.}
+see the \href{https://plausible.io/docs/stats-api#filters-}{API documentation on
+filtering}.}
 }
 \value{
 A named list, with three elements: \code{results}, \code{meta}, and \code{query}.

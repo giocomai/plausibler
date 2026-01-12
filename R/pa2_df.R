@@ -55,7 +55,7 @@ pa2_df <- function(response_l, long = FALSE) {
           dimensions = dimensions_names,
           values = dimensions_values
         ) |>
-          tidyr::pivot_wider(names_from = dimensions, values_from = values)
+          tidyr::pivot_wider(names_from = "dimensions", values_from = "values")
       }
 
       metrics_values <- current_result_l |>
