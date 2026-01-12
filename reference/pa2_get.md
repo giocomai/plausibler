@@ -26,16 +26,17 @@ pa2_get(
   values include: "day", "7d", "28d", "30d", "91d", "month", "6mo",
   "12mo", "year", "all". Custom date ranges can be given as a list of
   two dates e.g. `list("2024-01-01", "2024-07-01")`. See examples, and
-  the
-  [https://plausible.io/docs/stats-api#date_range](https://giocomai.github.io/plausibler/reference/official%0Adocumentation)
-  for details.
+  the [official
+  documentation](https://plausible.io/docs/stats-api#date_range) for
+  details.
 
 - filters:
 
   Optional, defaults to NULL. If given, it must be a list of three
   (operator, dimension, clauses) or four (operator, dimension, clauses,
-  modifiers) elements. See examples. For details, see the
-  [https://plausible.io/docs/stats-api#filters-](https://giocomai.github.io/plausibler/reference/API%20documentation%20on%0Afiltering).
+  modifiers) elements. See examples. For details, see the [API
+  documentation on
+  filtering](https://plausible.io/docs/stats-api#filters-).
 
 ## Value
 

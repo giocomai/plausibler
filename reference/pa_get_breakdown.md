@@ -19,21 +19,23 @@ pa_get_breakdown(
 - period:
 
   Period to include in the analysis, defaults to "30d". See examples as
-  well as the the official documentation for valid values:
-  <https://plausible.io/docs/stats-api#time-dimensions>
+  well as the [time-dimensions section of the official
+  documentation](https://plausible.io/docs/stats-api#time-dimensions)
+  for valid values.
 
 - property:
 
   Property to break down the stats by. For a full list of available
-  properties, see the official documentation:
-  https://plausible.io/docs/stats-api#properties
+  properties, see the [properties section of the official
+  documentation](https://plausible.io/docs/stats-api#properties).
 
 - metrics:
 
   Default to "visitors". Can be set, for example, to
   `c("visitors", "pageviews", "bounce_rate", "visit_duration")`. For a
-  full list of available metrics and their description, see the official
-  documentation: https://plausible.io/docs/stats-api#metrics
+  full list of available metrics and their description, see the [metrics
+  section of the official
+  documentation](https://plausible.io/docs/stats-api#metrics).
 
 - limit:
 
@@ -47,9 +49,9 @@ pa_get_breakdown(
   Optional, defaults to NULL. If given, it must be given in the form
   "visit:browser==Firefox;visit:country==FR", or as a named vector (see
   examples). Use ";" to separate multiple filtering criteria. For
-  details, see the
-  [https://plausible.io/docs/stats-api#filtering](https://giocomai.github.io/plausibler/reference/API%20documentation%20on%0Afiltering)
-  for reference.
+  details, see the [API documentation on
+  filtering](https://plausible.io/docs/stats-api#filtering) for
+  reference.
 
 ## Value
 
