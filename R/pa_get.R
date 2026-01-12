@@ -84,7 +84,7 @@ pa_get <- function(
     url_request <- full_url
   }
 
-  url_request <- URLencode(URL = url_request, reserved = FALSE)
+  url_request <- utils::URLencode(URL = url_request, reserved = FALSE)
 
   req <- curl::curl_fetch_memory(url_request, handle = pa_create_handler())
 

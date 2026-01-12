@@ -22,9 +22,19 @@ knitr::opts_chunk$set(
 
 See the [Plausible Analytics API documentation](https://plausible.io/docs/stats-api) for more details on the API, the endpoints, etc.
 
+## Preliminary notice on API versions
+
+This package has originally been built targeting the Plausible API version 1. Most documentation on [Plausible's website](https://plausible.io/docs/stats-api) refers to API version 2. A set of new functions are being introduced to facilitate interactions with API v2, in particular `pa2_get()` and `pa2_df()`. See relevant examples and documentations for each of these functions. More structured documentation and examples workflows will be added in due time. 
+
 ## Installation
 
-You can install `plausibler` from GitHub with:
+You can install `plausibler` from [r-universe](https://giocomai.r-universe.dev/plausibler) with:
+
+``` r
+install.packages('plausibler', repos = c('https://giocomai.r-universe.dev', 'https://cloud.r-project.org'))
+```
+
+Or from GitHub with:
 
 ``` r
 remotes::install_github("giocomai/plausibler")

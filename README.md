@@ -4,6 +4,7 @@
 # plausibler
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 `plausibler` is a wrapper for the R programming language to the
@@ -14,9 +15,26 @@ See the [Plausible Analytics API
 documentation](https://plausible.io/docs/stats-api) for more details on
 the API, the endpoints, etc.
 
+## Preliminary notice on API versions
+
+This package has originally been built targeting the Plausible API
+version 1. Most documentation on [Plausible’s
+website](https://plausible.io/docs/stats-api) refers to API version 2. A
+set of new functions are being introduced to facilitate interactions
+with API v2, in particular `pa2_get()` and `pa2_df()`. See relevant
+examples and documentations for each of these functions. More structured
+documentation and examples workflows will be added in due time.
+
 ## Installation
 
-You can install `plausibler` from GitHub with:
+You can install `plausibler` from
+[r-universe](https://giocomai.r-universe.dev/plausibler) with:
+
+``` r
+install.packages('plausibler', repos = c('https://giocomai.r-universe.dev', 'https://cloud.r-project.org'))
+```
+
+Or from GitHub with:
 
 ``` r
 remotes::install_github("giocomai/plausibler")
@@ -86,34 +104,44 @@ pa_get_top_pages()
 If you are interested in more metrics, see:
 
 ``` r
-pa_get_breakdown(period = "30d",
-                 property = "event:page",
-                 metrics = c("visitors",
-                             "pageviews",
-                             "bounce_rate",
-                             "visit_duration"),
-                 limit = 1000)
+pa_get_breakdown(
+  period = "30d",
+  property = "event:page",
+  metrics = c(
+    "visitors",
+    "pageviews",
+    "bounce_rate",
+    "visit_duration"
+  ),
+  limit = 1000
+)
 ```
 
 Or, say, combining properties, metrics, and filters, to see the
 referrers for visits to a given page:
 
 ``` r
-pa_get_breakdown(period = "6mo",
-                 property = "visit:referrer",
-                 metrics = c("visitors",
-                             "pageviews",
-                             "bounce_rate",
-                             "visit_duration"),
-                 limit = 1000, 
-                 filters = list(`event:page` = "/example/"))
+pa_get_breakdown(
+  period = "6mo",
+  property = "visit:referrer",
+  metrics = c(
+    "visitors",
+    "pageviews",
+    "bounce_rate",
+    "visit_duration"
+  ),
+  limit = 1000,
+  filters = list(`event:page` = "/example/")
+)
 ```
 
 It is possible to query for custom periods:
 
 ``` r
-pa_get_breakdown(period = "custom&date=2023-04-01,2023-06-30",
-                 property = "event:page")
+pa_get_breakdown(
+  period = "custom&date=2023-04-01,2023-06-30",
+  property = "event:page"
+)
 ```
 
 It is also possible to get aggregate stats:

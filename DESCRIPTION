@@ -1,6 +1,6 @@
 Package: plausibler
 Title: Access Plausible Analytics API
-Version: 0.1.7.9002
+Version: 0.1.7.9003
 Authors@R: 
     person(given = "Giorgio",
            family = "Comai",
@@ -13,6 +13,8 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.1.0)
 Imports: 
     cli,
     curl,
@@ -20,8 +22,10 @@ Imports:
     jsonlite,
     purrr,
     tibble,
-    tidyr
+    dplyr,
+    tidyr,
+    fs
 Suggests: 
     RSQLite,
-    dplyr
+    DBI
 URL: https://giocomai.github.io/plausibler/
