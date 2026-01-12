@@ -1,6 +1,7 @@
 #' Gets data from Plausible Analytics API
 #'
-#' For details, consult the official documentation: https://plausible.io/docs/stats-api
+#' For details, consult the \href{https://plausible.io/docs/stats-api}{official
+#' documentation}.
 #'
 #' @param endpoint Endpoint as described in the official documentation, e.g.
 #'   "/api/v1/stats/timeseries".
@@ -14,8 +15,8 @@
 #' @param filters Optional, defaults to NULL. If given, it must be given in the
 #'   form "visit:browser==Firefox;visit:country==FR", or as a named vector (see
 #'   examples). Use ";" to separate multiple filtering criteria. For details,
-#'   see the \href{API documentation on
-#'   filtering}{https://plausible.io/docs/stats-api#filtering} for reference.
+#'   see the \href{https://plausible.io/docs/stats-api#filtering}{API
+#'   documentation on filtering} for reference.
 #'
 #' @return A data frame (a tibble) with results.
 #' @export

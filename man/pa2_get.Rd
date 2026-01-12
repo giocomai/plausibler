@@ -33,8 +33,8 @@ filtering}.}
 A named list, with three elements: \code{results}, \code{meta}, and \code{query}.
 }
 \description{
-For details, consult the \href{official
-documentation}{https://plausible.io/docs/stats-api}.
+For details, consult the \href{https://plausible.io/docs/stats-api}{official
+documentation}.
 }
 \examples{
 \dontrun{

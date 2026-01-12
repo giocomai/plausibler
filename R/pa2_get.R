@@ -1,7 +1,7 @@
 #' Gets data from Plausible Analytics API (v2)
 #'
-#' For details, consult the \href{official
-#' documentation}{https://plausible.io/docs/stats-api}.
+#' For details, consult the \href{https://plausible.io/docs/stats-api}{official
+#' documentation}.
 #'
 #' @param date_range A character vector of length 1, or a list of two dates or
 #'   times. Valid values include: "day", "7d", "28d", "30d", "91d", "month",
