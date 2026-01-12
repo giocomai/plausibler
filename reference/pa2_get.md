@@ -1,7 +1,7 @@
 # Gets data from Plausible Analytics API (v2)
 
-For details, consult the
-[https://plausible.io/docs/stats-api](https://giocomai.github.io/plausibler/reference/official%0Adocumentation).
+For details, consult the [official
+documentation](https://plausible.io/docs/stats-api).
 
 ## Usage
 

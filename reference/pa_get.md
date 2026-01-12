@@ -1,7 +1,7 @@
 # Gets data from Plausible Analytics API
 
-For details, consult the official documentation:
-https://plausible.io/docs/stats-api
+For details, consult the [official
+documentation](https://plausible.io/docs/stats-api).
 
 ## Usage
 
@@ -28,9 +28,9 @@ pa_get(endpoint, parameters = NULL, filters = NULL, full_url = NULL)
   Optional, defaults to NULL. If given, it must be given in the form
   "visit:browser==Firefox;visit:country==FR", or as a named vector (see
   examples). Use ";" to separate multiple filtering criteria. For
-  details, see the
-  [https://plausible.io/docs/stats-api#filtering](https://giocomai.github.io/plausibler/reference/API%20documentation%20on%0Afiltering)
-  for reference.
+  details, see the [API documentation on
+  filtering](https://plausible.io/docs/stats-api#filtering) for
+  reference.
 
 - full_url:
 
