@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">plausibler</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.7.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.7.9003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,10 +52,18 @@
 <p><code>plausibler</code> is a wrapper for the R programming language to the <a href="https://plausible.io/" class="external-link">Plausible Analytics</a> API. It facilitates making queries, and getting tidy data frames in return.</p>
 <p>See the <a href="https://plausible.io/docs/stats-api" class="external-link">Plausible Analytics API documentation</a> for more details on the API, the endpoints, etc.</p>
 <div class="section level2">
+<h2 id="preliminary-notice-on-api-versions">Preliminary notice on API versions<a class="anchor" aria-label="anchor" href="#preliminary-notice-on-api-versions"></a>
+</h2>
+<p>This package has originally been built targeting the Plausible API version 1. Most documentation on <a href="https://plausible.io/docs/stats-api" class="external-link">Plausible’s website</a> refers to API version 2. A set of new functions are being introduced to facilitate interactions with API v2, in particular <code><a href="reference/pa2_get.html">pa2_get()</a></code> and <code><a href="reference/pa2_df.html">pa2_df()</a></code>. See relevant examples and documentations for each of these functions. More structured documentation and examples workflows will be added in due time.</p>
+</div>
+<div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install <code>plausibler</code> from GitHub with:</p>
+<p>You can install <code>plausibler</code> from <a href="https://giocomai.r-universe.dev/plausibler" class="external-link">r-universe</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'plausibler'</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'https://giocomai.r-universe.dev'</span>, <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Or from GitHub with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"giocomai/plausibler"</span><span class="op">)</span></span></code></pre></div>
 <p>To facilitate interactive use and auto-complete, each function starts with “pa_” (for “Plausible Analytics”) followed by a verb describing what the function does.</p>
 </div>
@@ -63,7 +71,7 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <p>At the beginning of each session, you will need to set the base url of your Plausible Analytics instance (if not self-hosted, <a href="https://plausible.io/" class="external-link uri">https://plausible.io/</a>), your <code>site_id</code> (the domain of your website), and your API key.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pa_set.html">pa_set</a></span><span class="op">(</span></span>
 <span>  base_url <span class="op">=</span> <span class="st">"https://plausible.io/"</span>,</span>
 <span>  site_id <span class="op">=</span> <span class="st">"example.com"</span>,</span>
@@ -71,51 +79,61 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p>You have then three main options to get data from the API.</p>
 <p>If you know exactly your query, you can just go with it. You can e.g. see your monthly stats for the last six months with:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get.html">pa_get</a></span><span class="op">(</span>full_url <span class="op">=</span> <span class="st">"https://plausible.io/api/v1/stats/timeseries?site_id=$SITE_ID&amp;period=6mo"</span><span class="op">)</span></span></code></pre></div>
 <p>Keep in mind that you will still need to set the key with <code><a href="reference/pa_set.html">pa_set()</a></code>. Replace $SITE_ID with your domain in this example, or check out the <a href="https://plausible.io/docs/stats-api" class="external-link">official API documentation</a> for many more examples.</p>
 <p>If you prefer to stick to a syntax closer to what you would typically use in R, you can achieve the same as above with the following:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get.html">pa_get</a></span><span class="op">(</span></span>
 <span>  endpoint <span class="op">=</span> <span class="st">"/api/v1/stats/timeseries"</span>,</span>
 <span>  parameters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>period <span class="op">=</span> <span class="st">"6mo"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Finally, you can use wrapper functions, so you don’t need to remember the endpoint. Here are some example for time series data:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_timeseries.html">pa_get_timeseries</a></span><span class="op">(</span>period <span class="op">=</span> <span class="st">"6mo"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/pa_get_timeseries.html">pa_get_timeseries</a></span><span class="op">(</span>period <span class="op">=</span> <span class="st">"30d"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/pa_get_timeseries.html">pa_get_timeseries</a></span><span class="op">(</span>period <span class="op">=</span> <span class="st">"custom&amp;date=2021-06-01,2021-06-07"</span><span class="op">)</span></span></code></pre></div>
 <p>Here are some example for breakdown of stats:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_breakdown.html">pa_get_breakdown</a></span><span class="op">(</span>period <span class="op">=</span> <span class="st">"30d"</span>, property <span class="op">=</span> <span class="st">"event:page"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># which is exactly the same as:</span></span>
 <span><span class="fu"><a href="reference/pa_get_top_pages.html">pa_get_top_pages</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>If you are interested in more metrics, see:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_breakdown.html">pa_get_breakdown</a></span><span class="op">(</span>period <span class="op">=</span> <span class="st">"30d"</span>,</span>
-<span>                 property <span class="op">=</span> <span class="st">"event:page"</span>,</span>
-<span>                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"visitors"</span>,</span>
-<span>                             <span class="st">"pageviews"</span>,</span>
-<span>                             <span class="st">"bounce_rate"</span>,</span>
-<span>                             <span class="st">"visit_duration"</span><span class="op">)</span>,</span>
-<span>                 limit <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
-<p>Or, say, combining properties, metrics, and filters, to see the referrers for visits to a given page:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_breakdown.html">pa_get_breakdown</a></span><span class="op">(</span>period <span class="op">=</span> <span class="st">"6mo"</span>,</span>
-<span>                 property <span class="op">=</span> <span class="st">"visit:referrer"</span>,</span>
-<span>                 metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"visitors"</span>,</span>
-<span>                             <span class="st">"pageviews"</span>,</span>
-<span>                             <span class="st">"bounce_rate"</span>,</span>
-<span>                             <span class="st">"visit_duration"</span><span class="op">)</span>,</span>
-<span>                 limit <span class="op">=</span> <span class="fl">1000</span>, </span>
-<span>                 filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>`event:page` <span class="op">=</span> <span class="st">"/example/"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>It is possible to query for custom periods:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_breakdown.html">pa_get_breakdown</a></span><span class="op">(</span></span>
+<span>  period <span class="op">=</span> <span class="st">"30d"</span>,</span>
+<span>  property <span class="op">=</span> <span class="st">"event:page"</span>,</span>
+<span>  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"visitors"</span>,</span>
+<span>    <span class="st">"pageviews"</span>,</span>
+<span>    <span class="st">"bounce_rate"</span>,</span>
+<span>    <span class="st">"visit_duration"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Or, say, combining properties, metrics, and filters, to see the referrers for visits to a given page:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_breakdown.html">pa_get_breakdown</a></span><span class="op">(</span>period <span class="op">=</span> <span class="st">"custom&amp;date=2023-04-01,2023-06-30"</span>,</span>
-<span>                 property <span class="op">=</span> <span class="st">"event:page"</span><span class="op">)</span></span></code></pre></div>
-<p>It is also possible to get aggregate stats:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_breakdown.html">pa_get_breakdown</a></span><span class="op">(</span></span>
+<span>  period <span class="op">=</span> <span class="st">"6mo"</span>,</span>
+<span>  property <span class="op">=</span> <span class="st">"visit:referrer"</span>,</span>
+<span>  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"visitors"</span>,</span>
+<span>    <span class="st">"pageviews"</span>,</span>
+<span>    <span class="st">"bounce_rate"</span>,</span>
+<span>    <span class="st">"visit_duration"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>`event:page` <span class="op">=</span> <span class="st">"/example/"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>It is possible to query for custom periods:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_breakdown.html">pa_get_breakdown</a></span><span class="op">(</span></span>
+<span>  period <span class="op">=</span> <span class="st">"custom&amp;date=2023-04-01,2023-06-30"</span>,</span>
+<span>  property <span class="op">=</span> <span class="st">"event:page"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>It is also possible to get aggregate stats:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_aggregate.html">pa_get_aggregate</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -123,7 +141,7 @@
 </h2>
 <p>As breakdown by multiple properties has not been natively implemented in the API, <code>plausibler</code> offers a convenience function that tries to achieve the same result by repeated queries, iterating through each occurrence of a property on a given date.</p>
 <p>The following should get the number of visitors from each source to each page on each date of the last week.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pa_get_properties_by_date.html">pa_get_properties_by_date</a></span><span class="op">(</span></span>
 <span>  property1 <span class="op">=</span> <span class="st">"visit:source"</span>,</span>
 <span>  property2 <span class="op">=</span> <span class="st">"event:page"</span></span>
@@ -174,7 +192,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
