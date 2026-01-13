@@ -4,10 +4,13 @@
 \alias{pa_get_page_timeseries}
 \title{Get stats for a given page by time period}
 \usage{
-pa_get_page_timeseries(period = "30d", page)
+pa_get_page_timeseries(page, period = "30d", limit = 100)
 }
 \arguments{
-\item{period}{Period to include in the analysis, defaults to "30d". See examples as well as the the official documentation for valid values: https://plausible.io/docs/stats-api#time-periods}
+\item{period}{Period to include in the analysis, defaults to "30d". See
+examples as well as the the
+\href{https://plausible.io/docs/stats-api#time-periods}{official
+documentation for valid time periods values}.}
 
 \item{limit}{Limit the number of results. Defaults to 100.}
 }
@@ -19,6 +22,6 @@ Get stats for a given page by time period
 }
 \examples{
 \dontrun{
-pa_get_page_timeseries(period = "6mo", page = "/")
+  pa_get_page_timeseries(period = "6mo", page = "/")
 }
 }

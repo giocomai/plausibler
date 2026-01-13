@@ -42,15 +42,17 @@
 #' pa_get_properties_by_date()
 #' pa_get_properties_by_date(property1 = "visit:referrer")
 #' }
-pa_get_properties_by_date <- function(property1 = "visit:source",
-                                      property2 = "event:page",
-                                      start_date = Sys.Date() - 8,
-                                      end_date = Sys.Date() - 1,
-                                      property1_to_exclude = character(),
-                                      limit = 1000,
-                                      cache = TRUE,
-                                      only_cached = FALSE,
-                                      wait = 0.1) {
+pa_get_properties_by_date <- function(
+  property1 = "visit:source",
+  property2 = "event:page",
+  start_date = Sys.Date() - 8,
+  end_date = Sys.Date() - 1,
+  property1_to_exclude = character(),
+  limit = 1000,
+  cache = TRUE,
+  only_cached = FALSE,
+  wait = 0.1
+) {
   pa_settings <- pa_set()
 
   all_dates_v <- seq.Date(
@@ -62,7 +64,9 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
 
   if (cache == TRUE) {
     if (requireNamespace("RSQLite", quietly = TRUE) == FALSE) {
-      cli::cli_abort("Package `RSQLite` needs to be installed when `cache` is set to TRUE. Please install `RSQLite` or set cache to FALSE.")
+      cli::cli_abort(
+        "Package `RSQLite` needs to be installed when `cache` is set to TRUE. Please install `RSQLite` or set cache to FALSE."
+      )
     }
     fs::dir_create(pa_settings$site_id)
 
@@ -114,7 +118,7 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
       return(
         previous_data_db |>
           dplyr::filter(date %in% all_dates_v) |>
-          dplyr::collect() |> 
+          dplyr::collect() |>
           tibble::as_tibble()
       )
     }
@@ -144,15 +148,17 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
         property = property1,
         limit = limit
       )
-      
+
       if (is.null(current_breakdown)) {
         return(NULL)
       }
-      
-      current_p1_df <- current_breakdown |>
-        dplyr::mutate(visitors = as.numeric(visitors))
 
-      current_p1_df <- current_p1_df[!(current_p1_df[[1]] %in% property1_to_exclude), ]
+      current_p1_df <- current_breakdown |>
+        dplyr::mutate(visitors = as.numeric(.data[["visitors"]]))
+
+      current_p1_df <- current_p1_df[
+        !(current_p1_df[[1]] %in% property1_to_exclude),
+      ]
 
       items_to_process_v <- unique(current_p1_df[[1]])
 
@@ -185,7 +191,11 @@ pa_get_properties_by_date <- function(property1 = "visit:source",
           }
 
           pg_bd_df[["date"]] <- current_date
-          pg_bd_df[[sub(pattern = ".+:", replacement = "", x = property1)]] <- current_item
+          pg_bd_df[[sub(
+            pattern = ".+:",
+            replacement = "",
+            x = property1
+          )]] <- current_item
 
           current_p2_df <- pg_bd_df |>
             dplyr::select(3, 4, 1, 2)

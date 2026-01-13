@@ -4,7 +4,7 @@
 \alias{pa_get_page_aggregate}
 \title{Get aggregated stats for a given page}
 \usage{
-pa_get_page_aggregate(period = "30d", page, limit = 100)
+pa_get_page_aggregate(page, period = "30d", limit = 100)
 }
 \arguments{
 \item{period}{Period to include in the analysis, defaults to "30d". See

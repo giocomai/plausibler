@@ -47,7 +47,7 @@ pa_get_aggregate <- function(
 #' \dontrun{
 #'   pa_get_page_aggregate(period = "6mo", page = "/")
 #' }
-pa_get_page_aggregate <- function(period = "30d", page, limit = 100) {
+pa_get_page_aggregate <- function(page, period = "30d", limit = 100) {
   pa_get(
     endpoint = "/api/v1/stats/aggregate",
     parameters = list(
