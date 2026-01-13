@@ -5,7 +5,7 @@ Get aggregated stats for a given page
 ## Usage
 
 ``` r
-pa_get_page_aggregate(period = "30d", page, limit = 100)
+pa_get_page_aggregate(page, period = "30d", limit = 100)
 ```
 
 ## Arguments

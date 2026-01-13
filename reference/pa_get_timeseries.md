@@ -13,8 +13,8 @@ pa_get_timeseries(period = "30d")
 - period:
 
   Period to include in the analysis, defaults to "30d". See examples as
-  well as the the official documentation for valid values:
-  https://plausible.io/docs/stats-api#time-periods
+  well as the the [official documentation for valid time periods
+  values](https://plausible.io/docs/stats-api#time-periods).
 
 ## Value
 
