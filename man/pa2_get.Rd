@@ -23,11 +23,37 @@ two dates e.g. \code{list("2024-01-01", "2024-07-01")}. See examples, and the
 \href{https://plausible.io/docs/stats-api#date_range}{official
 documentation} for details.}
 
-\item{filters}{Optional, defaults to NULL. If given, it must be a list of
+\item{metrics}{Defaults to "visits". See
+\href{https://plausible.io/docs/stats-api#metrics}{official
+documentation on metrics in API version 2} for more details.}
+
+\item{dimensions}{Optional, defaults to \code{NULL}. See
+\href{https://plausible.io/docs/stats-api#dimensions}{official
+documentation on dimensions in API version 2} for more details.}
+
+\item{filters}{Optional, defaults to \code{NULL}. If given, it must be a list of
 three (operator, dimension, clauses) or four (operator, dimension, clauses,
 modifiers) elements. See examples. For details,
-see the \href{https://plausible.io/docs/stats-api#filters-}{API documentation on
-filtering}.}
+see the \href{https://plausible.io/docs/stats-api#filters-}{API
+documentation on filtering}.}
+
+\item{order_by}{Optional, defaults to \code{NULL}. See
+\href{https://plausible.io/docs/stats-api#order_by-}{official
+documentation on order in API version 2} for more details.}
+
+\item{include}{Optional, defaults to \code{NULL}, if given must be a named list
+(see examples). Additional options for the query as to what data to
+include. See the
+\href{https://plausible.io/docs/stats-api#include-}{\code{include} section of
+the official documentation} for details.}
+
+\item{pagination}{Optional, defaults to \code{NULL}, if given must be a named list
+(see examples). Implictly API default to \code{pagination = list(limit = 10000, offset = 0)}. Define number of results in the results, and change the
+offset component to paginate. See
+\href{https://plausible.io/docs/stats-api#pagination-}{the official
+documentation for more details}.}
+
+\item{site_id}{Corresponds to the domain of your website.}
 }
 \value{
 A named list, with three elements: \code{results}, \code{meta}, and \code{query}.

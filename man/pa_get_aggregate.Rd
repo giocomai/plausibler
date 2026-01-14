@@ -4,18 +4,16 @@
 \alias{pa_get_aggregate}
 \title{Get aggregated stats for a given website}
 \usage{
-pa_get_aggregate(
-  period = "30d",
-  metrics = "visitors,pageviews,bounce_rate,visit_duration"
-)
+pa_get_aggregate(period = "30d", metrics = "visits")
 }
 \arguments{
 \item{period}{Period to include in the analysis, defaults to "30d". See
 examples as well as the the official documentation for valid values:
 \url{https://plausible.io/docs/stats-api#time-dimensions}}
 
-\item{metrics}{Defaults to all available metrics. See documentation for more
-details: https://plausible.io/docs/stats-api#get-apiv1statsaggregate}
+\item{metrics}{Defaults to "visits". See
+\href{https://plausible.io/docs/stats-api-v1#metrics}{official
+documentation on metrics of API version 1} for more details.}
 }
 \value{
 A data frame.

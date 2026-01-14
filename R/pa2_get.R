@@ -9,11 +9,32 @@
 #'   two dates e.g. `list("2024-01-01", "2024-07-01")`. See examples, and the
 #'   \href{https://plausible.io/docs/stats-api#date_range}{official
 #' documentation} for details.
-#' @param filters Optional, defaults to NULL. If given, it must be a list of
+#' @param metrics Defaults to "visits". See
+#'   \href{https://plausible.io/docs/stats-api#metrics}{official
+#'   documentation on metrics in API version 2} for more details.
+#' @param dimensions Optional, defaults to `NULL`. See
+#'   \href{https://plausible.io/docs/stats-api#dimensions}{official
+#'   documentation on dimensions in API version 2} for more details.
+#' @param filters Optional, defaults to `NULL`. If given, it must be a list of
 #'   three (operator, dimension, clauses) or four (operator, dimension, clauses,
 #'   modifiers) elements. See examples. For details,
-#'   see the \href{https://plausible.io/docs/stats-api#filters-}{API documentation on
-#'   filtering}.
+#'   see the \href{https://plausible.io/docs/stats-api#filters-}{API
+#'   documentation on filtering}.
+#' @param order_by Optional, defaults to `NULL`. See
+#'   \href{https://plausible.io/docs/stats-api#order_by-}{official
+#'   documentation on order in API version 2} for more details.
+#' @param include Optional, defaults to `NULL`, if given must be a named list
+#'   (see examples). Additional options for the query as to what data to
+#'   include. See the
+#'   \href{https://plausible.io/docs/stats-api#include-}{`include` section of
+#'   the official documentation} for details.
+#' @param pagination Optional, defaults to `NULL`, if given must be a named list
+#'   (see examples). Implictly API default to `pagination = list(limit = 10000,
+#'   offset = 0)`. Define number of results in the results, and change the
+#'   offset component to paginate. See
+#'   \href{https://plausible.io/docs/stats-api#pagination-}{the official
+#'   documentation for more details}.
+#' @inheritParams pa_set
 #'
 #' @return A named list, with three elements: `results`, `meta`, and `query`.
 #' @export
