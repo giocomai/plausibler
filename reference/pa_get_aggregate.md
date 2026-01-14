@@ -5,10 +5,7 @@ Get aggregated stats for a given website
 ## Usage
 
 ``` r
-pa_get_aggregate(
-  period = "30d",
-  metrics = "visitors,pageviews,bounce_rate,visit_duration"
-)
+pa_get_aggregate(period = "30d", metrics = "visits")
 ```
 
 ## Arguments
@@ -21,8 +18,9 @@ pa_get_aggregate(
 
 - metrics:
 
-  Defaults to all available metrics. See documentation for more details:
-  https://plausible.io/docs/stats-api#get-apiv1statsaggregate
+  Defaults to "visits". See [official documentation on metrics of API
+  version 1](https://plausible.io/docs/stats-api-v1#metrics) for more
+  details.
 
 ## Value
 

@@ -65,12 +65,50 @@ two dates e.g. <code>list("2024-01-01", "2024-07-01")</code>. See examples, and 
 documentation</a> for details.</p></dd>
 
 
+<dt id="arg-metrics">metrics<a class="anchor" aria-label="anchor" href="#arg-metrics"></a></dt>
+<dd><p>Defaults to "visits". See
+<a href="https://plausible.io/docs/stats-api#metrics" class="external-link">official
+documentation on metrics in API version 2</a> for more details.</p></dd>
+
+
+<dt id="arg-dimensions">dimensions<a class="anchor" aria-label="anchor" href="#arg-dimensions"></a></dt>
+<dd><p>Optional, defaults to <code>NULL</code>. See
+<a href="https://plausible.io/docs/stats-api#dimensions" class="external-link">official
+documentation on dimensions in API version 2</a> for more details.</p></dd>
+
+
 <dt id="arg-filters">filters<a class="anchor" aria-label="anchor" href="#arg-filters"></a></dt>
-<dd><p>Optional, defaults to NULL. If given, it must be a list of
+<dd><p>Optional, defaults to <code>NULL</code>. If given, it must be a list of
 three (operator, dimension, clauses) or four (operator, dimension, clauses,
 modifiers) elements. See examples. For details,
-see the <a href="https://plausible.io/docs/stats-api#filters-" class="external-link">API documentation on
-filtering</a>.</p></dd>
+see the <a href="https://plausible.io/docs/stats-api#filters-" class="external-link">API
+documentation on filtering</a>.</p></dd>
+
+
+<dt id="arg-order-by">order_by<a class="anchor" aria-label="anchor" href="#arg-order-by"></a></dt>
+<dd><p>Optional, defaults to <code>NULL</code>. See
+<a href="https://plausible.io/docs/stats-api#order_by-" class="external-link">official
+documentation on order in API version 2</a> for more details.</p></dd>
+
+
+<dt id="arg-include">include<a class="anchor" aria-label="anchor" href="#arg-include"></a></dt>
+<dd><p>Optional, defaults to <code>NULL</code>, if given must be a named list
+(see examples). Additional options for the query as to what data to
+include. See the
+<a href="https://plausible.io/docs/stats-api#include-" class="external-link"><code>include</code> section of
+the official documentation</a> for details.</p></dd>
+
+
+<dt id="arg-pagination">pagination<a class="anchor" aria-label="anchor" href="#arg-pagination"></a></dt>
+<dd><p>Optional, defaults to <code>NULL</code>, if given must be a named list
+(see examples). Implictly API default to <code>pagination = list(limit = 10000, offset = 0)</code>. Define number of results in the results, and change the
+offset component to paginate. See
+<a href="https://plausible.io/docs/stats-api#pagination-" class="external-link">the official
+documentation for more details</a>.</p></dd>
+
+
+<dt id="arg-site-id">site_id<a class="anchor" aria-label="anchor" href="#arg-site-id"></a></dt>
+<dd><p>Corresponds to the domain of your website.</p></dd>
 
 </dl></div>
     <div class="section level2">

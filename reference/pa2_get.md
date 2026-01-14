@@ -30,13 +30,52 @@ pa2_get(
   documentation](https://plausible.io/docs/stats-api#date_range) for
   details.
 
+- metrics:
+
+  Defaults to "visits". See [official documentation on metrics in API
+  version 2](https://plausible.io/docs/stats-api#metrics) for more
+  details.
+
+- dimensions:
+
+  Optional, defaults to `NULL`. See [official documentation on
+  dimensions in API version
+  2](https://plausible.io/docs/stats-api#dimensions) for more details.
+
 - filters:
 
-  Optional, defaults to NULL. If given, it must be a list of three
+  Optional, defaults to `NULL`. If given, it must be a list of three
   (operator, dimension, clauses) or four (operator, dimension, clauses,
   modifiers) elements. See examples. For details, see the [API
   documentation on
   filtering](https://plausible.io/docs/stats-api#filters-).
+
+- order_by:
+
+  Optional, defaults to `NULL`. See [official documentation on order in
+  API version 2](https://plausible.io/docs/stats-api#order_by-) for more
+  details.
+
+- include:
+
+  Optional, defaults to `NULL`, if given must be a named list (see
+  examples). Additional options for the query as to what data to
+  include. See the [`include` section of the official
+  documentation](https://plausible.io/docs/stats-api#include-) for
+  details.
+
+- pagination:
+
+  Optional, defaults to `NULL`, if given must be a named list (see
+  examples). Implictly API default to
+  `pagination = list(limit = 10000, offset = 0)`. Define number of
+  results in the results, and change the offset component to paginate.
+  See [the official documentation for more
+  details](https://plausible.io/docs/stats-api#pagination-).
+
+- site_id:
+
+  Corresponds to the domain of your website.
 
 ## Value
 
