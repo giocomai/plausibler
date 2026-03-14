@@ -12,9 +12,10 @@ pa_get_top_pages(period = "30d", limit = 100)
 
 - period:
 
-  Period to include in the analysis, defaults to "30d". See examples as
-  well as the the official documentation for valid values:
-  https://plausible.io/docs/stats-api#time-periods
+  Period to include in the analysis, defaults to `30d`. See examples as
+  well as the [the official
+  documentation](https://plausible.io/docs/stats-api#time-periods) for
+  valid values.
 
 - limit:
 

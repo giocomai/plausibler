@@ -23,8 +23,8 @@ pa2_get(
 - date_range:
 
   A character vector of length 1, or a list of two dates or times. Valid
-  values include: "day", "7d", "28d", "30d", "91d", "month", "6mo",
-  "12mo", "year", "all". Custom date ranges can be given as a list of
+  values include: `day`, `7d`, `28d`, `30d`, `91d`, `month`, `6mo`,
+  `12mo`, `year`, `all`. Custom date ranges can be given as a list of
   two dates e.g. `list("2024-01-01", "2024-07-01")`. See examples, and
   the [official
   documentation](https://plausible.io/docs/stats-api#date_range) for
@@ -67,7 +67,7 @@ pa2_get(
 - pagination:
 
   Optional, defaults to `NULL`, if given must be a named list (see
-  examples). Implictly API default to
+  examples). Implicitly API default to
   `pagination = list(limit = 10000, offset = 0)`. Define number of
   results in the results, and change the offset component to paginate.
   See [the official documentation for more

@@ -175,5 +175,5 @@ enforced).
 ## Future development
 
 - more wrapper functions
-- maybe, more extensive local caching with sqlite
+- maybe, more extensive local caching with SQLite
 - suggestions? Open an issue

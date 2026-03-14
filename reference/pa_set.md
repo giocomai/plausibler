@@ -12,8 +12,9 @@ pa_set(base_url = NULL, site_id = NULL, key = NULL)
 
 - base_url:
 
-  The base URL of the Plausible instance. Set to https://plausible.io/ -
-  or to your own domain for self-hosted Plausible.
+  The base URL of the Plausible instance. Set to
+  <https://plausible.io/> - or to your own domain for self-hosted
+  Plausible.
 
 - site_id:
 

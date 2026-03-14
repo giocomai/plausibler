@@ -22,13 +22,13 @@ pa_get_breakdown_by_date(
 
   Earliest day to include in the output. Defaults to 8 days ago in order
   to include the last full week of data. Date is expected in the format
-  "YYYY-MM-DD", either as character or Date.
+  `YYYY-MM-DD`, either as character or Date.
 
 - end_date:
 
   Most recent day to include in the output. Defaults to yesterday in
   order to include the last full week of data. Date is expected in the
-  format "YYYY-MM-DD", either as character or Date.
+  format `YYYY-MM-DD`, either as character or Date.
 
 - limit:
 
@@ -37,9 +37,9 @@ pa_get_breakdown_by_date(
 
 - cache:
 
-  Defaults to TRUE. If TRUE, caches data in a local sqlite database,
+  Defaults to `TRUE`. If `TRUE`, caches data in a local SQLite database,
   stored under a folder named as the website in the current working
-  directory. The sqlite database is named after the chosen properties,
+  directory. The SQLite database is named after the chosen properties,
   hence there shouldn't be problems in caching data for different
   websites or different combinations of properties.
 
