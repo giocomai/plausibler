@@ -65,7 +65,10 @@ pa_get_breakdown <- function(
 
 #' Get most visited pages for a given period
 #'
-#' @param period Period to include in the analysis, defaults to "30d". See examples as well as the the official documentation for valid values: https://plausible.io/docs/stats-api#time-periods
+#' @param period Period to include in the analysis, defaults to `30d`. See
+#'   examples as well as the
+#'   \href{https://plausible.io/docs/stats-api#time-periods}{the official
+#'   documentation} for valid values.
 #' @param limit Limit the number of results. Defaults to 100.
 #'
 #' @return A data frame.

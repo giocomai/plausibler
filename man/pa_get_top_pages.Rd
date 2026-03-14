@@ -7,7 +7,10 @@
 pa_get_top_pages(period = "30d", limit = 100)
 }
 \arguments{
-\item{period}{Period to include in the analysis, defaults to "30d". See examples as well as the the official documentation for valid values: https://plausible.io/docs/stats-api#time-periods}
+\item{period}{Period to include in the analysis, defaults to \verb{30d}. See
+examples as well as the
+\href{https://plausible.io/docs/stats-api#time-periods}{the official
+documentation} for valid values.}
 
 \item{limit}{Limit the number of results. Defaults to 100.}
 }

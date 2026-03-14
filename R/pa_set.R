@@ -1,7 +1,8 @@
 #' Set API key for the current session
 #'
 #' @param base_url The base URL of the Plausible instance. Set to
-#'   https://plausible.io/ - or to your own domain for self-hosted Plausible.
+#'   \url{https://plausible.io/} - or to your own domain for self-hosted
+#'   Plausible.
 #' @param site_id Corresponds to the domain of your website.
 #' @param key A character string used for authentication. Can be retrieved from
 #'   the user settings in Plausible Analytics.
@@ -23,7 +24,7 @@ pa_set <- function(base_url = NULL, site_id = NULL, key = NULL) {
       cli::cli_abort(
         c(
           x = "Base URL of the Plausible instance must be given.",
-          i = "If using the default hosted Plausible instances, set this to {.var https://plausible.io/}"
+          i = "If using the default hosted Plausible instance, set this to {.var https://plausible.io/}"
         )
       )
     }
@@ -90,7 +91,7 @@ pa_get_settings <- function(base_url = NULL, site_id = NULL, key = NULL) {
       cli::cli_abort(
         c(
           x = "Base URL of the Plausible instance must be given.",
-          i = "If using the default hosted Plausible instances, set this to {.var https://plausible.io/}"
+          i = "If using the default hosted Plausible instance, set this to {.var https://plausible.io/}"
         )
       )
     }

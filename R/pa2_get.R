@@ -4,8 +4,8 @@
 #' documentation}.
 #'
 #' @param date_range A character vector of length 1, or a list of two dates or
-#'   times. Valid values include: "day", "7d", "28d", "30d", "91d", "month",
-#'   "6mo", "12mo", "year", "all". Custom date ranges can be given as a list of
+#'   times. Valid values include: `day`, `7d`, `28d`, `30d`, `91d`, `month`,
+#'   `6mo`, `12mo`, `year`, `all`. Custom date ranges can be given as a list of
 #'   two dates e.g. `list("2024-01-01", "2024-07-01")`. See examples, and the
 #'   \href{https://plausible.io/docs/stats-api#date_range}{official
 #' documentation} for details.
@@ -29,7 +29,7 @@
 #'   \href{https://plausible.io/docs/stats-api#include-}{`include` section of
 #'   the official documentation} for details.
 #' @param pagination Optional, defaults to `NULL`, if given must be a named list
-#'   (see examples). Implictly API default to `pagination = list(limit = 10000,
+#'   (see examples). Implicitly API default to `pagination = list(limit = 10000,
 #'   offset = 0)`. Define number of results in the results, and change the
 #'   offset component to paginate. See
 #'   \href{https://plausible.io/docs/stats-api#pagination-}{the official

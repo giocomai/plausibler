@@ -11,17 +11,17 @@ pa_get(endpoint, parameters = NULL, filters = NULL, full_url = NULL)
 "/api/v1/stats/timeseries".}
 
 \item{parameters}{A named list with parameters (see example). If you want to
-run more complex queries you can leave this NULL, and include the whole
+run more complex queries you can leave this \code{NULL}, and include the whole
 call (Plausible instance URL, endpoint, and query) to the parameter
 \code{full_url}.}
 
-\item{filters}{Optional, defaults to NULL. If given, it must be given in the
+\item{filters}{Optional, defaults to \code{NULL}. If given, it must be given in the
 form "visit:browser==Firefox;visit:country==FR", or as a named vector (see
-examples). Use ";" to separate multiple filtering criteria. For details,
+examples). Use \verb{;} to separate multiple filtering criteria. For details,
 see the \href{https://plausible.io/docs/stats-api#filtering}{API
 documentation on filtering} for reference.}
 
-\item{full_url}{Defaults to NULL. If given, takes precedence over other
+\item{full_url}{Defaults to \code{NULL}. If given, takes precedence over other
 parameters as well as settings. See examples, as well as examples in the
 official documentation.}
 }

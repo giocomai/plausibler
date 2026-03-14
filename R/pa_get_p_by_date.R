@@ -9,22 +9,24 @@
 #' of them, and, relying on filters, queries one by one for each item resulting
 #' from this query (e.g. each `visit:source` found on a given date).
 #'
-#' See https://github.com/plausible/analytics/discussions/1254
+#' See \href{https://github.com/plausible/analytics/discussions/1254}{the
+#' relevant discussion on Plausible's repository}.
+#'
 #'
 #' @param start_date Earliest day to include in the output. Defaults to 8 days
 #'   ago in order to include the last full week of data. Date is expected in the
-#'   format "YYYY-MM-DD", either as character or Date.
+#'   format `YYYY-MM-DD`, either as character or Date.
 #' @param end_date Most recent day to include in the output. Defaults to
 #'   yesterday in order to include the last full week of data. Date is expected
-#'   in the format "YYYY-MM-DD", either as character or Date.
+#'   in the format `YYYY-MM-DD`, either as character or Date.
 #' @param limit Defaults to 1000, to reduce the need for pagination, which is
 #'   currently not supported.
-#' @param cache Defaults to TRUE. If TRUE, caches data in a local sqlite
+#' @param cache Defaults to `TRUE`. If `TRUE`, caches data in a local SQLite
 #'   database, stored under a folder named as the website in the current working
-#'   directory. The sqlite database is named after the chosen properties, hence
+#'   directory. The SQLite database is named after the chosen properties, hence
 #'   there shouldn't be problems in caching data for different websites or
 #'   different combinations of properties.
-#' @param only_cached Defaults to FALSE. If TRUE, only data cached locally will
+#' @param only_cached Defaults to `FALSE`. If `TRUE`, only data cached locally will
 #'   be retrieved.
 #' @param wait Numeric, defaults to 0.1. As this function is likely to make a
 #'   high number of requests to the API, a small pause is added between each
@@ -33,14 +35,15 @@
 #'   iterations. For example, "Direct / None" should mostly be excluded when
 #'   using `visit:source` or `visit:referrer`.
 #'
-#' @return A data frame with four columns: date, property1, property2, and
-#'   visitors.
+#' @return A data frame with four columns: `date`, `property1`, `property2`, and
+#'   `visitors`.
 #' @export
 #'
 #' @examples
+#'
 #' \dontrun{
-#' pa_get_properties_by_date()
-#' pa_get_properties_by_date(property1 = "visit:referrer")
+#'   pa_get_properties_by_date()
+#'   pa_get_properties_by_date(property1 = "visit:referrer")
 #' }
 pa_get_properties_by_date <- function(
   property1 = "visit:source",

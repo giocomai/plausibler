@@ -8,7 +8,8 @@ pa_set(base_url = NULL, site_id = NULL, key = NULL)
 }
 \arguments{
 \item{base_url}{The base URL of the Plausible instance. Set to
-https://plausible.io/ - or to your own domain for self-hosted Plausible.}
+\url{https://plausible.io/} - or to your own domain for self-hosted
+Plausible.}
 
 \item{site_id}{Corresponds to the domain of your website.}
 

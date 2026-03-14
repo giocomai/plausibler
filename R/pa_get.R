@@ -6,15 +6,15 @@
 #' @param endpoint Endpoint as described in the official documentation, e.g.
 #'   "/api/v1/stats/timeseries".
 #' @param parameters A named list with parameters (see example). If you want to
-#'   run more complex queries you can leave this NULL, and include the whole
+#'   run more complex queries you can leave this `NULL`, and include the whole
 #'   call (Plausible instance URL, endpoint, and query) to the parameter
 #'   `full_url`.
-#' @param full_url Defaults to NULL. If given, takes precedence over other
+#' @param full_url Defaults to `NULL`. If given, takes precedence over other
 #'   parameters as well as settings. See examples, as well as examples in the
 #'   official documentation.
-#' @param filters Optional, defaults to NULL. If given, it must be given in the
+#' @param filters Optional, defaults to `NULL`. If given, it must be given in the
 #'   form "visit:browser==Firefox;visit:country==FR", or as a named vector (see
-#'   examples). Use ";" to separate multiple filtering criteria. For details,
+#'   examples). Use `;` to separate multiple filtering criteria. For details,
 #'   see the \href{https://plausible.io/docs/stats-api#filtering}{API
 #'   documentation on filtering} for reference.
 #'

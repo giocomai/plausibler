@@ -17,8 +17,8 @@ pa2_get(
 }
 \arguments{
 \item{date_range}{A character vector of length 1, or a list of two dates or
-times. Valid values include: "day", "7d", "28d", "30d", "91d", "month",
-"6mo", "12mo", "year", "all". Custom date ranges can be given as a list of
+times. Valid values include: \code{day}, \verb{7d}, \verb{28d}, \verb{30d}, \verb{91d}, \code{month},
+\verb{6mo}, \verb{12mo}, \code{year}, \code{all}. Custom date ranges can be given as a list of
 two dates e.g. \code{list("2024-01-01", "2024-07-01")}. See examples, and the
 \href{https://plausible.io/docs/stats-api#date_range}{official
 documentation} for details.}
@@ -48,7 +48,7 @@ include. See the
 the official documentation} for details.}
 
 \item{pagination}{Optional, defaults to \code{NULL}, if given must be a named list
-(see examples). Implictly API default to \code{pagination = list(limit = 10000, offset = 0)}. Define number of results in the results, and change the
+(see examples). Implicitly API default to \code{pagination = list(limit = 10000, offset = 0)}. Define number of results in the results, and change the
 offset component to paginate. See
 \href{https://plausible.io/docs/stats-api#pagination-}{the official
 documentation for more details}.}

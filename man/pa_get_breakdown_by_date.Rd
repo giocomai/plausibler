@@ -17,18 +17,18 @@ pa_get_breakdown_by_date(
 \arguments{
 \item{start_date}{Earliest day to include in the output. Defaults to 8 days
 ago in order to include the last full week of data. Date is expected in the
-format "YYYY-MM-DD", either as character or Date.}
+format \code{YYYY-MM-DD}, either as character or Date.}
 
 \item{end_date}{Most recent day to include in the output. Defaults to
 yesterday in order to include the last full week of data. Date is expected
-in the format "YYYY-MM-DD", either as character or Date.}
+in the format \code{YYYY-MM-DD}, either as character or Date.}
 
 \item{limit}{Defaults to 1000, to reduce the need for pagination, which is
 currently not supported.}
 
-\item{cache}{Defaults to TRUE. If TRUE, caches data in a local sqlite
+\item{cache}{Defaults to \code{TRUE}. If \code{TRUE}, caches data in a local SQLite
 database, stored under a folder named as the website in the current working
-directory. The sqlite database is named after the chosen properties, hence
+directory. The SQLite database is named after the chosen properties, hence
 there shouldn't be problems in caching data for different websites or
 different combinations of properties.}
 
