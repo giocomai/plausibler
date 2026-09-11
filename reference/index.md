@@ -6,6 +6,8 @@
   : Transform API response from list to data frame
 - [`pa2_get()`](https://giocomai.github.io/plausibler/reference/pa2_get.md)
   : Gets data from Plausible Analytics API (v2)
+- [`pa2_get_metrics_by_day()`](https://giocomai.github.io/plausibler/reference/pa2_get_metrics_by_day.md)
+  : Retrieve metrics by day
 - [`pa_create_handler()`](https://giocomai.github.io/plausibler/reference/pa_create_handler.md)
   : Creates a curl handler object with API keys (used internally)
 - [`pa_get()`](https://giocomai.github.io/plausibler/reference/pa_get.md)
