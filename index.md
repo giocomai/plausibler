@@ -28,12 +28,14 @@ You can install `plausibler` from
 [r-universe](https://giocomai.r-universe.dev/plausibler) with:
 
 ``` r
+
 install.packages('plausibler', repos = c('https://giocomai.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
 Or from GitHub with:
 
 ``` r
+
 remotes::install_github("giocomai/plausibler")
 ```
 
@@ -49,6 +51,7 @@ your Plausible Analytics instance (if not self-hosted,
 and your API key.
 
 ``` r
+
 pa_set(
   base_url = "https://plausible.io/",
   site_id = "example.com",
@@ -62,6 +65,7 @@ If you know exactly your query, you can just go with it. You can
 e.g. see your monthly stats for the last six months with:
 
 ``` r
+
 pa_get(full_url = "https://plausible.io/api/v1/stats/timeseries?site_id=$SITE_ID&period=6mo")
 ```
 
@@ -75,6 +79,7 @@ If you prefer to stick to a syntax closer to what you would typically
 use in R, you can achieve the same as above with the following:
 
 ``` r
+
 pa_get(
   endpoint = "/api/v1/stats/timeseries",
   parameters = list(period = "6mo")
@@ -85,6 +90,7 @@ Finally, you can use wrapper functions, so you don’t need to remember
 the endpoint. Here are some example for time series data:
 
 ``` r
+
 pa_get_timeseries(period = "6mo")
 pa_get_timeseries(period = "30d")
 pa_get_timeseries(period = "custom&date=2021-06-01,2021-06-07")
@@ -93,6 +99,7 @@ pa_get_timeseries(period = "custom&date=2021-06-01,2021-06-07")
 Here are some example for breakdown of stats:
 
 ``` r
+
 pa_get_breakdown(period = "30d", property = "event:page")
 
 # which is exactly the same as:
@@ -102,6 +109,7 @@ pa_get_top_pages()
 If you are interested in more metrics, see:
 
 ``` r
+
 pa_get_breakdown(
   period = "30d",
   property = "event:page",
@@ -119,6 +127,7 @@ Or, say, combining properties, metrics, and filters, to see the
 referrers for visits to a given page:
 
 ``` r
+
 pa_get_breakdown(
   period = "6mo",
   property = "visit:referrer",
@@ -136,6 +145,7 @@ pa_get_breakdown(
 It is possible to query for custom periods:
 
 ``` r
+
 pa_get_breakdown(
   period = "custom&date=2023-04-01,2023-06-30",
   property = "event:page"
@@ -145,6 +155,7 @@ pa_get_breakdown(
 It is also possible to get aggregate stats:
 
 ``` r
+
 pa_get_aggregate()
 ```
 
@@ -159,6 +170,7 @@ The following should get the number of visitors from each source to each
 page on each date of the last week.
 
 ``` r
+
 pa_get_properties_by_date(
   property1 = "visit:source",
   property2 = "event:page"

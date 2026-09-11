@@ -32,6 +32,7 @@ Invisibly returns input as list.
 ## Examples
 
 ``` r
+
 pa_set(
   base_url = "https://plausible.io/",
   site_id = "example.com",

@@ -83,6 +83,7 @@ repository](https://github.com/plausible/analytics/discussions/1254).
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
   pa_get_properties_by_date()
   pa_get_properties_by_date(property1 = "visit:referrer")
