@@ -16,13 +16,15 @@
 #' pa_get_breakdown_by_date()
 #' pa_get_breakdown_by_date(property = "visit:source")
 #' }
-pa_get_breakdown_by_date <- function(property = "event:page",
-                                     metric = "visitors",
-                                     start_date = Sys.Date() - 8,
-                                     end_date = Sys.Date() - 1,
-                                     limit = 1000,
-                                     cache = TRUE,
-                                     wait = 0.1) {
+pa_get_breakdown_by_date <- function(
+  property = "event:page",
+  metric = "visitors",
+  start_date = Sys.Date() - 8,
+  end_date = Sys.Date() - 1,
+  limit = 1000,
+  cache = TRUE,
+  wait = 0.1
+) {
   pa_settings <- pa_set()
 
   all_dates_v <- seq.Date(
@@ -32,9 +34,11 @@ pa_get_breakdown_by_date <- function(property = "event:page",
   ) |>
     as.character()
 
-  if (cache == TRUE) {
+  if (cache) {
     if (requireNamespace("RSQLite", quietly = TRUE) == FALSE) {
-      cli::cli_abort("Package `RSQLite` needs to be installed when `cache` is set to TRUE. Please install `RSQLite` or set cache to FALSE.")
+      cli::cli_abort(
+        "Package `RSQLite` needs to be installed when `cache` is set to TRUE. Please install `RSQLite` or set cache to FALSE."
+      )
     }
     fs::dir_create(pa_settings$site_id)
 
@@ -56,7 +60,7 @@ pa_get_breakdown_by_date <- function(property = "event:page",
 
     current_table <- "by_date"
 
-    if (DBI::dbExistsTable(conn = db, name = current_table) == FALSE) {
+    if (!DBI::dbExistsTable(conn = db, name = current_table)) {
       return_df <- tibble::tibble(
         a = NA_character_,
         b = NA_character_,
@@ -117,9 +121,7 @@ pa_get_breakdown_by_date <- function(property = "event:page",
 
       current_df[[metric]] <- as.numeric(current_df[[metric]])
 
-
       Sys.sleep(time = wait)
-
 
       if (cache == TRUE) {
         DBI::dbAppendTable(

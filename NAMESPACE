@@ -2,6 +2,7 @@
 
 export(pa2_df)
 export(pa2_get)
+export(pa2_get_metrics_by_day)
 export(pa_create_handler)
 export(pa_get)
 export(pa_get_aggregate)
