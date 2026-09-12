@@ -35,6 +35,8 @@ pa_get_aggregate <- function(
 
 #' Get aggregated stats for a given page
 #'
+#' @param page url of relevant page, typically stripped of the top-level domain.
+#'   Home page is typically just "/".
 #' @param period Period to include in the analysis, defaults to "30d". See
 #'   examples as well as the the
 #'   \href{https://plausible.io/docs/stats-api#time-periods}{official
@@ -57,6 +59,6 @@ pa_get_page_aggregate <- function(page, period = "30d", limit = 100) {
       limit = limit
     )
   ) |>
-    tidyr::unnest(cols = visitors) |>
+    tidyr::unnest(cols = dplyr::all_of(c("visitors"))) |>
     dplyr::transmute(page = page, visitors = visitors)
 }

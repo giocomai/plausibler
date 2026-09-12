@@ -5,6 +5,10 @@
 #'
 #' @inheritParams pa2_get
 #' @inheritParams pa2_df
+#' @inheritParams pa_get_properties_by_date
+#' @param cache_connection An active database connection, defaults to `NULL`
+#'   (internally, defaults to a `duckdb` database stored in a folder with the
+#'   same name as the `site_id`).
 #'
 #' @returns A data frame with three columns when `long` is set to `TRUE`
 #'   (`date`, `metric`, `value`), or as wide as needed when `long` is set to
@@ -13,7 +17,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' pa2_get_metrics_by_day(metrics = c("visits", "visitors", "pageviews"))
+#'   pa2_get_metrics_by_day(metrics = c("visits", "visitors", "pageviews"))
 #' }
 pa2_get_metrics_by_day <- function(
   metrics = c("visits"),

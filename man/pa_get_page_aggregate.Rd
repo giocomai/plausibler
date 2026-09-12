@@ -7,6 +7,9 @@
 pa_get_page_aggregate(page, period = "30d", limit = 100)
 }
 \arguments{
+\item{page}{url of relevant page, typically stripped of the top-level domain.
+Home page is typically just "/".}
+
 \item{period}{Period to include in the analysis, defaults to "30d". See
 examples as well as the the
 \href{https://plausible.io/docs/stats-api#time-periods}{official

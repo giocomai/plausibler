@@ -66,7 +66,7 @@ pa2_df <- function(response_l, long = FALSE) {
         metrics = metrics_names,
         values = metrics_values
       ) |>
-        tidyr::pivot_wider(names_from = metrics, values_from = values)
+        tidyr::pivot_wider(names_from = "metrics", values_from = "values")
 
       dplyr::bind_cols(
         dimensions_df,
