@@ -32,6 +32,18 @@ pa2_get_metrics_by_day(
   version 2](https://plausible.io/docs/stats-api#metrics) for more
   details.
 
+- start_date:
+
+  Earliest day to include in the output. Defaults to 8 days ago in order
+  to include the last full week of data. Date is expected in the format
+  `YYYY-MM-DD`, either as character or Date.
+
+- end_date:
+
+  Most recent day to include in the output. Defaults to yesterday in
+  order to include the last full week of data. Date is expected in the
+  format `YYYY-MM-DD`, either as character or Date.
+
 - long:
 
   Logical, defaults to FALSE. If FALSE, the default, the value for each
@@ -73,6 +85,31 @@ pa2_get_metrics_by_day(
 
   Corresponds to the domain of your website.
 
+- cache:
+
+  Defaults to `TRUE`. If `TRUE`, caches data in a local SQLite database,
+  stored under a folder named as the website in the current working
+  directory. The SQLite database is named after the chosen properties,
+  hence there shouldn't be problems in caching data for different
+  websites or different combinations of properties.
+
+- cache_connection:
+
+  An active database connection, defaults to `NULL` (internally,
+  defaults to a `duckdb` database stored in a folder with the same name
+  as the `site_id`).
+
+- only_cached:
+
+  Defaults to `FALSE`. If `TRUE`, only data cached locally will be
+  retrieved.
+
+- wait:
+
+  Numeric, defaults to 0.1. As this function is likely to make a high
+  number of requests to the API, a small pause is added between each
+  request to reduce load on the servers. description
+
 ## Value
 
 A data frame with three columns when `long` is set to `TRUE` (`date`,
@@ -83,6 +120,6 @@ depending on the number of requested metrics.
 
 ``` r
 if (FALSE) { # \dontrun{
-pa2_get_metrics_by_day(metrics = c("visits", "visitors", "pageviews"))
+  pa2_get_metrics_by_day(metrics = c("visits", "visitors", "pageviews"))
 } # }
 ```

@@ -10,6 +10,11 @@ pa_get_page_timeseries(page, period = "30d", limit = 100)
 
 ## Arguments
 
+- page:
+
+  url of relevant page, typically stripped of the top-level domain. Home
+  page is typically just "/".
+
 - period:
 
   Period to include in the analysis, defaults to "30d". See examples as
