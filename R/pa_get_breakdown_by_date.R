@@ -7,6 +7,10 @@
 #' yet integrated in the `pa_get_timeseries()` function).
 #'
 #' @inheritParams pa_get_properties_by_date
+#' @inheritParams pa_get_breakdown
+#' @param metric Defaults to "visits". See
+#'   \href{https://plausible.io/docs/stats-api#metrics}{official
+#'   documentation on metrics in API version 2} for more details.
 #'
 #' @return A data frame with three columns: date, property, and metric.
 #' @export
@@ -18,7 +22,7 @@
 #' }
 pa_get_breakdown_by_date <- function(
   property = "event:page",
-  metric = "visitors",
+  metric = "visits",
   start_date = Sys.Date() - 8,
   end_date = Sys.Date() - 1,
   limit = 1000,

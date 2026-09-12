@@ -34,6 +34,15 @@
 #' @param property1_to_exclude Character vector. Useful to remove irrelevant
 #'   iterations. For example, "Direct / None" should mostly be excluded when
 #'   using `visit:source` or `visit:referrer`.
+#' @param property1 Property to break down the stats by. For a full list of
+#'   available properties, see the
+#'   \href{https://plausible.io/docs/stats-api#properties}{properties section of
+#' the official documentation}.
+#' @param property2 Property to break down the stats by. For a full list of
+#'   available properties, see the
+#'   \href{https://plausible.io/docs/stats-api#properties}{properties section of
+#' the official documentation}.
+
 #'
 #' @return A data frame with four columns: `date`, `property1`, `property2`, and
 #'   `visitors`.

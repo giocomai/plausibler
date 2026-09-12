@@ -17,6 +17,16 @@ pa_get_properties_by_date(
 )
 }
 \arguments{
+\item{property1}{Property to break down the stats by. For a full list of
+available properties, see the
+\href{https://plausible.io/docs/stats-api#properties}{properties section of
+the official documentation}.}
+
+\item{property2}{Property to break down the stats by. For a full list of
+available properties, see the
+\href{https://plausible.io/docs/stats-api#properties}{properties section of
+the official documentation}.}
+
 \item{start_date}{Earliest day to include in the output. Defaults to 8 days
 ago in order to include the last full week of data. Date is expected in the
 format \code{YYYY-MM-DD}, either as character or Date.}

@@ -98,9 +98,9 @@ pa2_get_metrics_by_day <- function(
         name = current_table
       ) |>
         dplyr::filter(
-          date %in% all_dates_v,
-          metric %in% metrics,
-          filters_hash == current_filters_hash
+          .data[["date"]] %in% all_dates_v,
+          .data[["metric"]] %in% metrics,
+          .data[["filters_hash"]] == current_filters_hash
         ) |>
         dplyr::collect() |>
         tibble::as_tibble()
@@ -129,7 +129,7 @@ pa2_get_metrics_by_day <- function(
 
   to_process_combo_l_df <- to_process_combo_df |>
     dplyr::group_by(date) |>
-    dplyr::summarise(metric = list(metric))
+    dplyr::summarise(metric = list(.data[["metric"]]))
 
   newly_retrieved_df <- purrr::map2(
     .progress = "Retrieving non-cached days",
@@ -149,7 +149,7 @@ pa2_get_metrics_by_day <- function(
         pa2_df()
 
       daily_visits_long_df <- daily_visits_df |>
-        dplyr::rename(date = `time:day`) |>
+        dplyr::rename(date = "time:day") |>
         tidyr::pivot_longer(
           cols = !"date",
           names_to = "metric",
@@ -177,8 +177,11 @@ pa2_get_metrics_by_day <- function(
     purrr::list_rbind()
 
   long_df <- dplyr::bind_rows(previous_data_df, newly_retrieved_df) |>
-    dplyr::arrange(date, factor(metric, levels = metrics)) |>
-    dplyr::select(!filters_hash)
+    dplyr::arrange(
+      .data[["date"]],
+      factor(.data[["metric"]], levels = metrics)
+    ) |>
+    dplyr::select(!"filters_hash")
 
   if (long) {
     return(long_df)

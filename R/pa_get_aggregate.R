@@ -60,5 +60,5 @@ pa_get_page_aggregate <- function(page, period = "30d", limit = 100) {
     )
   ) |>
     tidyr::unnest(cols = dplyr::all_of(c("visitors"))) |>
-    dplyr::transmute(page = page, visitors = visitors)
+    dplyr::transmute(page = page, visitors = .data[["visitors"]])
 }
