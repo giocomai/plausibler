@@ -7,7 +7,7 @@ This facilitates caching daily stats.
 ``` r
 pa_get_breakdown_by_date(
   property = "event:page",
-  metric = "visitors",
+  metric = "visits",
   start_date = Sys.Date() - 8,
   end_date = Sys.Date() - 1,
   limit = 1000,
@@ -17,6 +17,18 @@ pa_get_breakdown_by_date(
 ```
 
 ## Arguments
+
+- property:
+
+  Property to break down the stats by. For a full list of available
+  properties, see the [properties section of the official
+  documentation](https://plausible.io/docs/stats-api#properties).
+
+- metric:
+
+  Defaults to "visits". See [official documentation on metrics in API
+  version 2](https://plausible.io/docs/stats-api#metrics) for more
+  details.
 
 - start_date:
 

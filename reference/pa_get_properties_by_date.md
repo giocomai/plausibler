@@ -20,6 +20,18 @@ pa_get_properties_by_date(
 
 ## Arguments
 
+- property1:
+
+  Property to break down the stats by. For a full list of available
+  properties, see the [properties section of the official
+  documentation](https://plausible.io/docs/stats-api#properties).
+
+- property2:
+
+  Property to break down the stats by. For a full list of available
+  properties, see the [properties section of the official
+  documentation](https://plausible.io/docs/stats-api#properties).
+
 - start_date:
 
   Earliest day to include in the output. Defaults to 8 days ago in order
