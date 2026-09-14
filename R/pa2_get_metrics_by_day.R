@@ -150,18 +150,27 @@ pa2_get_metrics_by_day <- function(
       ) |>
         pa2_df()
 
-      daily_visits_long_df <- daily_visits_df |>
-        dplyr::rename(date = "time:day") |>
-        tidyr::pivot_longer(
-          cols = !"date",
-          names_to = "metric",
-          values_to = "value",
-          values_transform = list(
-            metric = as.character,
-            value = as.numeric
-          )
-        ) |>
-        dplyr::mutate(filters_hash = current_filters_hash)
+      if (nrow(daily_visits_df) == 0) {
+        daily_visits_long_df <- tibble::tibble(
+          date = current_date,
+          metric = current_metrics,
+          value = 0,
+          filters_hash = current_filters_hash
+        )
+      } else {
+        daily_visits_long_df <- daily_visits_df |>
+          dplyr::rename(date = "time:day") |>
+          tidyr::pivot_longer(
+            cols = !"date",
+            names_to = "metric",
+            values_to = "value",
+            values_transform = list(
+              metric = as.character,
+              value = as.numeric
+            )
+          ) |>
+          dplyr::mutate(filters_hash = current_filters_hash)
+      }
 
       if (cache) {
         DBI::dbAppendTable(
