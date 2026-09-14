@@ -76,6 +76,8 @@ pa2_get_metrics_by_day <- function(
         )
       )
 
+      on.exit(DBI::dbDisconnect(db), add = TRUE)
+
       current_table <- "metrics_by_day"
 
       if (!DBI::dbExistsTable(conn = db, name = current_table)) {
