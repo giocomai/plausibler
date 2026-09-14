@@ -71,7 +71,7 @@ pa2_get(
   `pagination = list(limit = 10000, offset = 0)`. Define number of
   results in the results, and change the offset component to paginate.
   See [the official documentation for more
-  details](https://plausible.io/docs/stats-api#pagination-).
+  details](https://plausible.io/docs/stats-api#pagination).
 
 - site_id:
 

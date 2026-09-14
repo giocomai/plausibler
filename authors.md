@@ -8,12 +8,12 @@
 ## Citation
 
 Comai G (2026). *plausibler: Access Plausible Analytics API*. R package
-version 0.1.8.9002, <https://giocomai.github.io/plausibler/>.
+version 0.1.8.9003, <https://giocomai.github.io/plausibler/>.
 
     @Manual{,
       title = {plausibler: Access Plausible Analytics API},
       author = {Giorgio Comai},
       year = {2026},
-      note = {R package version 0.1.8.9002},
+      note = {R package version 0.1.8.9003},
       url = {https://giocomai.github.io/plausibler/},
     }
