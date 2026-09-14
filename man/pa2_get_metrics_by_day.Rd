@@ -56,7 +56,7 @@ the official documentation} for details.}
 \item{pagination}{Optional, defaults to \code{NULL}, if given must be a named list
 (see examples). Implicitly API default to \code{pagination = list(limit = 10000, offset = 0)}. Define number of results in the results, and change the
 offset component to paginate. See
-\href{https://plausible.io/docs/stats-api#pagination-}{the official
+\href{https://plausible.io/docs/stats-api#pagination}{the official
 documentation for more details}.}
 
 \item{site_id}{Corresponds to the domain of your website.}
