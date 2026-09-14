@@ -192,7 +192,8 @@ pa2_get_metrics_by_day <- function(
       .data[["date"]],
       factor(.data[["metric"]], levels = metrics)
     ) |>
-    dplyr::select(!"filters_hash")
+    dplyr::select(!"filters_hash") |>
+    dplyr::mutate(date = as.Date(date))
 
   if (long) {
     return(long_df)
