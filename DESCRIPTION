@@ -1,6 +1,6 @@
 Package: plausibler
 Title: Access Plausible Analytics API
-Version: 0.1.8.9004
+Version: 0.1.8.9005
 Authors@R: 
     person(given = "Giorgio",
            family = "Comai",
@@ -31,4 +31,4 @@ Suggests:
     duckdb,
     DBI
 URL: https://giocomai.github.io/plausibler/
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1
