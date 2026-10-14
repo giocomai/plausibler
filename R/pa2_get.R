@@ -156,14 +156,16 @@ pa2_get <- function(
       pretty = FALSE
     )
 
-  req_json <- api_request |>
+  resp <- api_request |>
     httr2::req_error(is_error = \(resp) FALSE) |>
-    httr2::req_perform() |>
+    httr2::req_perform()
+
+  resp_json <- resp |>
     httr2::resp_body_json()
 
-  if (!is.null(req_json[["error"]])) {
-    cli::cli_abort(req_json[["error"]])
+  if (!is.null(resp_json[["error"]])) {
+    cli::cli_abort(resp_json[["error"]])
   }
 
-  req_json
+  resp_json
 }
