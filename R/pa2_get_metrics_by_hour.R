@@ -114,12 +114,32 @@ pa2_get_metrics_by_hour <- function(
       if (long) {
         return(long_df)
       } else {
-        long_df |>
-          tidyr::pivot_wider(
-            id_cols = c("date", "date_hour"),
-            names_from = "metric",
-            values_from = "value"
-          )
+        return(
+          long_df |>
+            # temp_id needed to keep duplicate rows with daylight saving time switch
+            dplyr::group_by(date_hour, metric) |>
+            dplyr::add_count() |>
+            dplyr::mutate(instance = dplyr::row_number()) |>
+            dplyr::group_by(date_hour) |>
+            dplyr::mutate(n = dplyr::if_else(n == 1, n, instance)) |>
+            dplyr::mutate(
+              temp_id = stringr::str_c(
+                dplyr::cur_group_id(),
+                "_",
+                n,
+                "_",
+                date_hour
+              )
+            ) |>
+            dplyr::ungroup() |>
+            dplyr::select(!"n") |>
+            tidyr::pivot_wider(
+              id_cols = c("temp_id", "date", "date_hour"),
+              names_from = "metric",
+              values_from = "value"
+            ) |>
+            dplyr::select(!"temp_id")
+        )
       }
     }
 
@@ -207,9 +227,22 @@ pa2_get_metrics_by_hour <- function(
   } else {
     long_df |>
       # temp_id needed to keep duplicate rows with daylight saving time switch
+      dplyr::group_by(date_hour, metric) |>
+      dplyr::add_count() |>
+      dplyr::mutate(instance = dplyr::row_number()) |>
+      dplyr::group_by(date_hour) |>
+      dplyr::mutate(n = dplyr::if_else(n == 1, n, instance)) |>
       dplyr::mutate(
-        temp_id = stringr::str_c(dplyr::row_number(), "_", date_hour)
+        temp_id = stringr::str_c(
+          dplyr::cur_group_id(),
+          "_",
+          n,
+          "_",
+          date_hour
+        )
       ) |>
+      dplyr::ungroup() |>
+      dplyr::select(!"n") |>
       tidyr::pivot_wider(
         id_cols = c("temp_id", "date", "date_hour"),
         names_from = "metric",
