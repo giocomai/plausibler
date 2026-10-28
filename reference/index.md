@@ -10,6 +10,8 @@
   : Retrieve metrics by day
 - [`pa2_get_metrics_by_day_and_page()`](https://giocomai.github.io/plausibler/reference/pa2_get_metrics_by_day_and_page.md)
   : Retrieve metrics by day and page
+- [`pa2_get_metrics_by_hour()`](https://giocomai.github.io/plausibler/reference/pa2_get_metrics_by_hour.md)
+  : Retrieve metrics by hour
 - [`pa_create_handler()`](https://giocomai.github.io/plausibler/reference/pa_create_handler.md)
   : Creates a curl handler object with API keys (used internally)
 - [`pa_get()`](https://giocomai.github.io/plausibler/reference/pa_get.md)
